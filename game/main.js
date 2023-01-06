@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function()
 
 	const game = new Phaser.Game({
 		type: Phaser.AUTO,
-		title: 'LD51',
+		title: 'LD52',
 		parent: dom_container,
 		width: WIDTH_CANVAS,
 		height: HEIGHT_CANVAS,
