@@ -13,7 +13,7 @@ export default new Phaser.Class({
 	create: function()
 	{
 		// TODO
-		const start_game_text = this.add.text(WIDTH_CANVAS/2, HEIGHT_CANVAS/2, "PLAY GAME", {fontFamily: FONT_DEFAULT, color: "white", fontSize: "48px"}).setOrigin(0.5).setDepth(2);
+		const start_game_text = this.add.text(WIDTH_CANVAS/4, HEIGHT_CANVAS/4, "PLAY GAME", {fontFamily: FONT_DEFAULT, color: "white", fontSize: "48px"}).setOrigin(0.5).setDepth(2);
 
 		this.cursors = this.input.keyboard.addKeys("ENTER,SPACE");
 	},

@@ -11,13 +11,24 @@ document.addEventListener('DOMContentLoaded', function()
 	const dom_container = document.getElementById('container');
 
 	const game = new Phaser.Game({
+		pixelArt: true,
 		type: Phaser.AUTO,
 		title: 'LD52',
 		parent: dom_container,
-		width: WIDTH_CANVAS,
-		height: HEIGHT_CANVAS,
+		width: WIDTH_CANVAS/2,
+		height: HEIGHT_CANVAS/2,
+		resolution: 5,
 		scene: [scene_menu, gameplay],
-		backgroundColor: COLOR_BACKGROUND
+		backgroundColor: 0x202838,
+		physics: {
+			default: "arcade",
+			arcade: {
+				gravity: {
+					y: 300
+				},
+				debug: true
+			}
+		},
 	});
 
 	function resize()
