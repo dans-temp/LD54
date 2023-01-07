@@ -102,11 +102,70 @@ export default new Phaser.Class({
 			"assets/sprites/dude3.png",
 			{frameWidth: 20, frameHeight: 16}
 		);
+		this.load.spritesheet('idle',
+			'assets/sprites/idle.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+		this.load.spritesheet('run',
+			'assets/sprites/run.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
+		this.load.spritesheet('attack',
+			'assets/sprites/attack.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
+		this.load.spritesheet('jump',
+			'assets/sprites/jump.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
+		this.load.spritesheet('falling',
+			'assets/sprites/falling.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
 
 		this.load.atlas("tiles", "assets/dungeon_tiles.png", "assets/dungeon_tiles.json");
 	},
 	create: function()
 	{
+		//animations
+		this.anims.create({
+            key: "idle",
+            frames: this.anims.generateFrameNumbers("idle", {start: 0, end: 12}),
+            frameRate: 10,
+            repeat: -1
+        });
+
+		this.anims.create({
+            key: "run",
+            frames: this.anims.generateFrameNumbers("run", {start: 0, end: 4}),
+            frameRate: 10,
+            repeat: -1
+        });
+
+		this.anims.create({
+            key: "attack",
+            frames: this.anims.generateFrameNumbers("attack", {start: 0, end: 3}),
+            frameRate: 20
+        });
+
+		this.anims.create({
+            key: "jump",
+            frames: this.anims.generateFrameNumbers("jump", {start: 0, end: 2}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
+            key: "falling",
+            frames: this.anims.generateFrameNumbers("falling", {start: 0, end: 2}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+
 		//generate level
 		for(let i = 0; i < LEVELS[0].tiles.length; i++)
 		{
@@ -124,7 +183,8 @@ export default new Phaser.Class({
 		dude.sprite = this.add.sprite(50, 50, 'dude').setDisplaySize(20, 16).setOrigin(0.5, 1).setDepth(4);
 		this.cameras.main.startFollow(dude.sprite);
 		this.cameras.main.setBounds(0, 0, LEVELS[0].width*TILE_SIZE, LEVELS[0].height*TILE_SIZE);
-		this.cameras.main.setZoom(2);
+		this.cameras.main.setZoom(4);
+		dude.sprite.play("idle");
 	},
 	update()
 	{
@@ -137,6 +197,8 @@ export default new Phaser.Class({
 
 		if( (!left && !right) || (left && right))
 		{
+			if (dude.sprite.anims.currentAnim.key !== "idle" && !dude.falling && this.time.now > next_attack)
+				dude.sprite.play("idle");
 			if(dude.xvel > 0)
 				dude.xvel = Math.max(0, dude.xvel - RUN_DECEL);
 			else
@@ -145,15 +207,21 @@ export default new Phaser.Class({
 
 		if (left && !right)
 		{
+			if(!dude.falling && this.time.now > next_attack)
+				dude.sprite.anims.play("run", true);
 			if(Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL) < dude.xvel)
 				dude.xvel = Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL);
 			dude.facing_right = false;
+			dude.sprite.flipX = true;
 		}
 		else if(right && !left)
 		{
+			if(!dude.falling && this.time.now > next_attack)
+				dude.sprite.anims.play("run", true);
 			if(Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL) > dude.xvel)
 				dude.xvel = Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL);
 			dude.facing_right = true;
+			dude.sprite.flipX = false;
 		}
 
 		//dash decel
@@ -230,9 +298,18 @@ export default new Phaser.Class({
 			//player hit bottom
 			console.log("dead");
 		}
-		else if(!LEVELS[0].tiles[index_row][index_col_left] && !LEVELS[0].tiles[index_row + 1][index_col_right])
+		else if(!LEVELS[0].tiles[index_row + 1][index_col_left] && !LEVELS[0].tiles[index_row + 1][index_col_right])
 		{
 			dude.falling = true;
+		}
+		if(dude.falling)
+		{
+			if(dude.yvel > 0 && dude.sprite.anims.currentAnim.key != "falling" && dude.sprite.anims.currentAnim.key != "attack")
+			{
+				dude.sprite.play("falling");
+			}
+			else if (dude.sprite.anims.currentAnim.key != "jump" && dude.sprite.anims.currentAnim.key != "falling" && dude.sprite.anims.currentAnim.key != "attack")
+				dude.sprite.play("jump");
 		}
 	}
 });
@@ -269,6 +346,7 @@ function attacks(game)
 			LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i] = 0;
 		}
 	}
+	dude.sprite.play("attack");
 };
 
 function ability(game)
