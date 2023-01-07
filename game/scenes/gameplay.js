@@ -5,28 +5,29 @@ const LEVELS =
 	{
 		level: 1,
 		width: 30,
+		height: 20,
 		tiles: 
 		[
-			2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+			[2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [2, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		]
 	}
 ]
@@ -36,9 +37,10 @@ const LEVELS =
 const RUN_ACCEL = 0.3;
 const RUN_DECEL = 0.2;
 const MAX_SPEED = 6;
+const GRAVITY = 0.15;
 
 // TILES
-const TILE_SIZE = 8;
+const TILE_SIZE = 32;
 const EPSILON = 0.00000000001;
 
 const dude = {
@@ -48,6 +50,7 @@ const dude = {
     height: 64,
     hp_max: 5,
     hp_current: 5,
+	falling: true,
     level: 1
 };
 
@@ -70,30 +73,20 @@ export default new Phaser.Class({
 	create: function()
 	{
 		//generate level
-		let tile_offset_x = 0;
-		let tile_offset_y = 0
 		for(let i = 0; i < LEVELS[0].tiles.length; i++)
 		{
-			if(LEVELS[0].tiles[i] != 0)
+			for(let j = 0; j < LEVELS[0].tiles[i].length; j++)
 			{
-				this.add.image(tile_offset_x*TILE_SIZE, tile_offset_y*TILE_SIZE, "tiles", "floor-1").setScale(4).setOrigin(0);
-			}
-
-			if ((i+1) % LEVELS[0].width == 0)
-			{
-				tile_offset_x = 0;
-				tile_offset_y = tile_offset_y + TILE_SIZE;
-			}
-			else
-			{
-				tile_offset_x = tile_offset_x + TILE_SIZE;
+				if(LEVELS[0].tiles[i][j] != 0)
+				{
+					this.add.image(j*TILE_SIZE, i*TILE_SIZE, "tiles", "floor-1").setScale(2);
+				}
 			}
 		}
-		const start_game_text = this.add.text(WIDTH_CANVAS/2, HEIGHT_CANVAS/2, "IN GAME", {fontFamily: FONT_DEFAULT, color: "white", fontSize: "48px"}).setOrigin(0.5).setDepth(2);
 
 		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,W,A,S,D,R,SPACE");
 
-		dude.sprite = this.add.sprite(WIDTH_CANVAS/2, HEIGHT_CANVAS/2, 'dude').setDisplaySize(dude.width, dude.height).setDepth(4);
+		dude.sprite = this.add.sprite(100, 100, 'dude').setDisplaySize(dude.width, dude.height).setOrigin(1, 1).setDepth(4);
 	},
 	update()
 	{
@@ -112,16 +105,6 @@ export default new Phaser.Class({
 			dude.sprite.x += dude.xvel;
 		}
 
-		if(up === down)
-		{
-			if(dude.yvel > 0)
-				dude.yvel = Math.max(0, dude.yvel - RUN_DECEL);
-			else
-				dude.yvel = Math.min(0, dude.yvel + RUN_DECEL);
-
-			dude.sprite.y += dude.yvel;
-		}
-
 		if (left && !right)
 		{
 			dude.xvel = Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL);
@@ -132,16 +115,136 @@ export default new Phaser.Class({
 			dude.xvel = Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL);
 			dude.sprite.x += dude.xvel;
 		}
-		if(up)
+		
+		dude.x_old = dude.sprite.x;
+		dude.y_old = dude.sprite.y;
+
+		if(dude.falling)
+			dude.yvel += GRAVITY;
+
+		dude.sprite.x += dude.xvel;
+		dude.sprite.y += dude.yvel;
+
+		if(dude.sprite.y < dude.height)
 		{
-			dude.yvel = Math.max(-MAX_SPEED, dude.yvel - RUN_ACCEL);
-			dude.sprite.y += dude.yvel;
+			dude.sprite.y = dude.height;
+			dude.yvel = 0;
 		}
-		else if (down)
+		else if(dude.sprite.y > LEVELS[0].height*TILE_SIZE)
 		{
-			dude.yvel = Math.min(MAX_SPEED, dude.yvel + RUN_ACCEL);
-			dude.sprite.y += dude.yvel;
+			dude.falling = false;
+			dude.sprite.y = LEVELS[0].height*TILE_SIZE - EPSILON;
+			dude.yvel = 0;
 		}
 
+		if(dude.sprite.x < dude.width/2)
+		{
+			dude.sprite.x = dude.width/2;
+			dude.xvel = 0;
+		}
+		else if(dude.sprite.x > LEVELS[0].width*TILE_SIZE - dude.width/2)
+		{
+			dude.sprite.x = LEVELS[0].width*TILE_SIZE - dude.width/2 - EPSILON;
+			dude.xvel = 0;
+		}
+
+		handleCollision(this);
+
+		// player coordinates
+		const index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+		const index_col = Math.floor(dude.sprite.x/TILE_SIZE);
+		const index_col_left = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+		const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+		if(!LEVELS[0].tiles[index_row][index_col_left] && !LEVELS[0].tiles[index_row + 1][index_col_right])
+		{
+			dude.falling = true;
+		}
 	}
 });
+
+function handleCollision(game)
+{
+
+	function collideTile(index_row, index_col)
+	{
+		const y_top = index_row*TILE_SIZE;
+		const y_bottom = y_top + TILE_SIZE;
+		const x_left = index_col*TILE_SIZE;
+		const x_right = x_left + TILE_SIZE;
+
+		if(dude.sprite.y - EPSILON > y_top && dude.y_old - EPSILON <= y_top)
+		{
+			dude.sprite.y = y_top;
+			dude.yvel = 0;
+			dude.falling = false;
+			return;
+		}
+
+		if(dude.sprite.x + dude.width/2 - EPSILON > x_left && dude.x_old + dude.width/2 - EPSILON <= x_left)
+		{
+			dude.xvel = 0;
+			dude.sprite.x = x_left - dude.width/2;
+			return;
+		}
+
+		if(dude.sprite.x - dude.width/2 < x_right && dude.x_old - dude.width/2 >= x_right)
+		{
+			dude.xvel = 0;
+			dude.sprite.x = x_right + dude.width/2;
+			return;
+		}
+
+		if(dude.sprite.y - dude.height < y_bottom && dude.y_old - dude.height >= y_bottom)
+		{
+			dude.yvel = 0;
+			dude.sprite.y = y_bottom + dude.height;
+			return;
+		}
+	}
+
+	let index_row, index_col;
+
+	// top left
+	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+
+	// top right
+	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+
+	// bottom left
+	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+
+	// bottom right
+	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+
+	// top left again
+	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+
+	// bottom left again
+	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+
+	// top right again
+	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+
+	// bottom right again
+	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+	if(LEVELS[0].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+}
