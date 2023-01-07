@@ -37,6 +37,7 @@ const LEVELS =
 const RUN_ACCEL = 0.1;
 const RUN_DECEL = 0.05;
 const MAX_SPEED = 2;
+const JUMPSPEED = 3.4;
 const GRAVITY = 0.15;
 
 // TILES
@@ -86,7 +87,7 @@ export default new Phaser.Class({
 
 		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,W,A,S,D,R,SPACE");
 
-		dude.sprite = this.add.sprite(100, 100, 'dude').setDisplaySize(20, 16).setOrigin(0.5, 1).setDepth(4);
+		dude.sprite = this.add.sprite(50, 50, 'dude').setDisplaySize(20, 16).setOrigin(0.5, 1).setDepth(4);
 		this.cameras.main.startFollow(dude.sprite);
 		this.cameras.main.setBounds(0, 0, LEVELS[0].width*TILE_SIZE, LEVELS[0].height*TILE_SIZE);
 		this.cameras.main.setZoom(1);
@@ -95,7 +96,7 @@ export default new Phaser.Class({
 	{
 		const left = this.cursors.A.isDown || this.cursors.LEFT.isDown;
 		const right = this.cursors.D.isDown || this.cursors.RIGHT.isDown;
-		const up = this.cursors.W.isDown || this.cursors.UP.isDown;
+		const jump = this.cursors.W.isDown || this.cursors.UP.isDown;
 		const down = this.cursors.S.isDown || this.cursors.DOWN.isDown;
 
 		if( (!left && !right) || (left && right))
@@ -104,19 +105,15 @@ export default new Phaser.Class({
 				dude.xvel = Math.max(0, dude.xvel - RUN_DECEL);
 			else
 				dude.xvel = Math.min(0, dude.xvel + RUN_DECEL);
-		
-			dude.sprite.x += dude.xvel;
 		}
 
 		if (left && !right)
 		{
 			dude.xvel = Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL);
-			dude.sprite.x += dude.xvel;  
 		}
 		else if (right && !left)
 		{
 			dude.xvel = Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL);
-			dude.sprite.x += dude.xvel;
 		}
 		
 		dude.x_old = dude.sprite.x;
@@ -124,6 +121,13 @@ export default new Phaser.Class({
 
 		if(dude.falling)
 			dude.yvel += GRAVITY;
+
+
+		if(jump && !dude.falling)
+		{
+			dude.yvel = -JUMPSPEED;
+			dude.falling = true;
+		}
 
 		dude.sprite.x += dude.xvel;
 		dude.sprite.y += dude.yvel;
@@ -133,12 +137,12 @@ export default new Phaser.Class({
 			dude.sprite.y = dude.height;
 			dude.yvel = 0;
 		}
+
 		else if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
 		{
 			dude.falling = false;
 			dude.sprite.y = LEVELS[0].height*TILE_SIZE - EPSILON;
 			dude.yvel = 0;
-			
 		}
 
 		if(dude.sprite.x < dude.width/2)
@@ -152,17 +156,6 @@ export default new Phaser.Class({
 			dude.xvel = 0;
 		}
 
-		//top left
-		// this.add.image(dude.sprite.x - dude.width/2, dude.sprite.y - dude.height, "tiles", "floor-3").setScale(0.2).setOrigin(0,0).setDepth(10);
-		//bottom right
-		// this.add.image(dude.sprite.x + dude.width/2, dude.sprite.y, "tiles", "floor-3").setScale(0.2).setOrigin(0,0).setDepth(10);
-
-		// console.log(Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE));
-		const column_thing = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-		const row_thing = Math.floor((dude.sprite.y)/TILE_SIZE);
-
-		console.log (row_thing, column_thing);
-		console.log(LEVELS[0].tiles[row_thing][column_thing])
 		handleCollision(this);
 
 		// player coordinates
@@ -171,11 +164,10 @@ export default new Phaser.Class({
 		const index_col_left = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
 		const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
 
-
-		// if(!LEVELS[0].tiles[index_row][index_col_left] && !LEVELS[0].tiles[index_row + 1][index_col_right])
-		// {
-		// 	dude.falling = true;
-		// }
+		if(!LEVELS[0].tiles[index_row][index_col_left] && !LEVELS[0].tiles[index_row + 1][index_col_right])
+		{
+			dude.falling = true;
+		}
 	}
 });
 
@@ -188,8 +180,9 @@ function handleCollision(game)
 		const y_top = index_row*TILE_SIZE;
 		const y_bottom = y_top + TILE_SIZE;
 		const x_left = index_col*TILE_SIZE;
-		const x_right = x_left + TILE_SIZE;
+		const x_right = x_left + TILE_SIZE ;
 
+		//down
 		if(dude.sprite.y - EPSILON > y_top && dude.y_old - EPSILON <= y_top)
 		{
 			dude.sprite.y = y_top;
@@ -198,21 +191,24 @@ function handleCollision(game)
 			return;
 		}
 
-		if(dude.sprite.x + dude.width/2 - EPSILON > x_left && dude.x_old - dude.width/2 - EPSILON <= x_left)
+		//right
+		if(dude.sprite.x + dude.width/2 - EPSILON > x_left && dude.x_old + dude.width/2 - EPSILON <= x_left)
 		{
 			dude.xvel = 0;
 			dude.sprite.x = x_left - dude.width/2;
 			return;
 		}
 
-		if(dude.sprite.x - dude.width/2 < x_right && dude.x_old + dude.width/2 >= x_right)
+		//left
+		if(dude.sprite.x - dude.width/2 < x_right && dude.x_old - dude.width/2 >= x_right)
 		{
 			dude.xvel = 0;
 			dude.sprite.x = x_right + dude.width/2;
 			return;
 		}
 
-		if(dude.sprite.y - dude.height < y_bottom && dude.y_old - dude.height >= y_bottom)
+		//top
+		if(dude.sprite.y - dude.height + EPSILON < y_bottom && dude.y_old - dude.height >= y_bottom)
 		{
 			dude.yvel = 0;
 			dude.sprite.y = y_bottom + dude.height;
@@ -237,15 +233,16 @@ function handleCollision(game)
 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
 	if(LEVELS[0].tiles[index_row][index_col])
-	{	
-		// console.log("bottom left")
 		collideTile(index_row, index_col);
-	}
 
 	// bottom right
 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	console.log(index_col);
 	if(LEVELS[0].tiles[index_row][index_col])
+	{
+		console.log("bottom right");
 		collideTile(index_row, index_col);
+	}
 
 	// top left again
 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
