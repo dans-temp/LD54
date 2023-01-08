@@ -155,7 +155,7 @@ let timer;
 let game_start_time;
 let ability_image;
 let ability_image2;
-let swap_cooldown = 500;
+let swap_cooldown = 200;
 let next_swap = 500;
 
 export default new Phaser.Class({
@@ -233,6 +233,18 @@ export default new Phaser.Class({
 		this.load.atlas("tiles", "assets/dungeon_tiles.png", "assets/dungeon_tiles.json");
 		this.load.image('leaf', 'assets/sprites/leaf.png');
 		this.load.image('dirt', 'assets/sprites/dirt.png');
+
+		//audio
+		//the spot
+		this.load.audio("game_theme", "assets/music/game_theme.mp3");
+		this.load.audio("attack", "assets/soundfx/attack.mp3");
+		this.load.audio("wall_hit", "assets/soundfx/wall_hit.wav");
+		this.load.audio("plant_hit", "assets/soundfx/plant_hit.mp3");
+		this.load.audio("game_over", "assets/soundfx/game_over.mp3");
+		this.load.audio("level_complete", "assets/soundfx/level_complete.mp3");
+		this.load.audio("dash", "assets/soundfx/dash.mp3");
+
+
 	},
 	create: function()
 	{
@@ -342,6 +354,10 @@ export default new Phaser.Class({
 			lifespan: 1000,
 			gravityY: 20
 		});
+
+		this.music = this.sound.add("game_theme", {volume: 0.4});
+		this.music.loop = true;
+		this.music.play()
 
 		//generate level
 		generateLevel(this);
@@ -670,8 +686,10 @@ function attacks(game)
 	//check for hit
 	for(let i = 0; i < max_range_x - min_range_x; i ++)
 	{
+		// wall hit
 		if(LEVELS[dude.level].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i])
 		{
+			game.sound.play("wall_hit", {volume: 1});
 			if(dude.facing_right)
 				dude.xvel -= MAX_SPEED;
 				
@@ -720,9 +738,11 @@ function attacks(game)
 					crop_sprites[crop_sprites.length-1].sprite.play("mound");
 				}
 			}
+			game.sound.play("plant_hit", {volume: 0.4});
 			game.emitter_leaf.explode(30, (min_range_x + i)*TILE_SIZE + dude.width/2, Math.floor((dude.sprite.y-(dude.height/2))));
 		}
 	}
+	game.sound.play("attack", {volume: 1});
 	dude.sprite.play("attack");
 };
 
@@ -739,6 +759,7 @@ function ability(game)
 	}
 	else if(dude.ability == "dash")
 	{
+		game.sound.play("dash", {volume: 0.2});
 		if(dude.facing_right)
 		{
 			dude.xvel += DASHSPEED;
@@ -893,6 +914,8 @@ function generateLevel(game)
 
 function nextLevel(game)
 {
+	game.music.stop();
+	game.sound.play("level_complete", {volume: 0.5});
 	const level_done_text = game.add.text(400,300, "LEVEL COMPLETE", {fontFamily: FONT_TITLE, color: "white", fontSize: "24px"}).setOrigin(0.5).setScrollFactor(0).setDepth(4);
 
 	// dude.sprite.x = dude.x_old;
@@ -922,11 +945,14 @@ function nextLevel(game)
 		game_start_time = game.time.now;
 		level_complete = false;
 		hol_up_a_min = false;
+		game.music.loop = true;
+		game.music.play();
 	},2000);
 }
 
 function gameOver(game)
 {
+	game.sound.play("game_over", {volume: 0.5});
 	dude.sprite.x = dude.x_old;
 	let game_over_text = game.add.text(400,300, "DEATH", {fontFamily: FONT_TITLE, color: "white", fontSize: "24px"}).setOrigin(0.5).setScrollFactor(0).setDepth(4);
 	// 
