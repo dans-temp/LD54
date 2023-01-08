@@ -142,6 +142,7 @@ const dude = {
 	attack_cooldown: 250,
 	ability_cooldown: 300,
 	ability: "none",
+	ability2: "none",
     level: 0
 };
 
@@ -152,6 +153,10 @@ let level_complete = false;
 let hol_up_a_min = false;
 let timer;
 let game_start_time;
+let ability_image;
+let ability_image2;
+let swap_cooldown = 500;
+let next_swap = 500;
 
 export default new Phaser.Class({
 	Extends: Phaser.Scene,
@@ -347,11 +352,14 @@ export default new Phaser.Class({
 		timer = this.time.now -game_start_time;
 
 
-		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,W,A,S,D,E,ESC,SPACE");
+		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,Q,W,A,S,D,E,ESC,SPACE");
 		this.ui = {
 			top_hud_bg: this.add.graphics().fillStyle(0x000000, 0.7).fillRect(0, 0, WIDTH_CANVAS, 20).setPosition(0, 200),
             text_timer: this.add.text(300, 206, 1000 + "TIME: "+Math.floor(timer/1000), {fontSize: "10px", fill: "white"}),
             text_level: this.add.text(450, 206, "LEVEL: " + (dude.level + 1), {fontSize: "10px", fill: "white"}),
+			gold_outline: this.add.graphics().fillStyle(0x705711, 1).fillRect(375, 0, 20, 20).setPosition(0, 200),
+			current_power: this.add.graphics().fillStyle(0x000000, 1).fillRect(375, 0, 18, 18).setPosition(1, 201),
+			second_power: this.add.graphics().fillStyle(0x000000, 1).fillRect(400, 0, 20, 20).setPosition(0, 200)
         };
 
 		for(const key_object in this.ui)
@@ -395,6 +403,7 @@ export default new Phaser.Class({
 		const use_ability = this.cursors.E.isDown;
 		const attack = this.cursors.SPACE.isDown;
 		const restart = this.cursors.ESC.isDown;
+		const swap = this.cursors.Q.isDown;
 
 		if(restart)
 		{
@@ -411,6 +420,11 @@ export default new Phaser.Class({
 			
 		}
 
+		if(swap && this.time.now > next_swap)
+		{
+			swapAbilities(this);
+			next_swap = this.time.now + swap_cooldown;
+		}
 
 		if( (!left && !right) || (left && right))
 		{
@@ -519,7 +533,19 @@ export default new Phaser.Class({
 				const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
 				if(crop_index)
 				{
-					dude.ability = CROP_ABILITIES[crop_index - 1];
+					if(dude.ability == "none")
+					{
+						dude.ability = CROP_ABILITIES[crop_index - 1];
+						ability_image = this.add.image(385, 210, CROP_NAMES[[crop_index - 1]]).setScale(1).setScrollFactor(0).setDepth(5);
+					}
+					else
+					{
+						if(dude.ability2 != "none")
+							ability_image2.destroy();
+						dude.ability2 = CROP_ABILITIES[crop_index - 1]
+						ability_image2 =(this.add.image(410, 210, CROP_NAMES[[crop_index - 1]]).setScale(1).setScrollFactor(0).setDepth(5));
+					}
+
 					const index_row = Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)
 					const index_col = min_range_x + i;
 					regeneration_list.push({
@@ -646,7 +672,19 @@ function attacks(game)
 		const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i];
 		if(crop_index)
 		{
-			dude.ability = CROP_ABILITIES[crop_index - 1];
+			if(dude.ability == "none")
+			{
+				dude.ability = CROP_ABILITIES[crop_index - 1];
+				ability_image = game.add.image(385, 210, CROP_NAMES[[crop_index - 1]]).setScale(1).setScrollFactor(0).setDepth(5);
+			}
+			else
+			{
+				if(dude.ability2 != "none")
+					ability_image2.destroy();
+				dude.ability2 = CROP_ABILITIES[crop_index - 1]
+				ability_image2 =(game.add.image(410, 210, CROP_NAMES[[crop_index - 1]]).setScale(1).setScrollFactor(0).setDepth(5));
+			}
+				
 			const index_col = min_range_x + i;
 			const index_row = Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE);
 			regeneration_list.push({
@@ -700,6 +738,17 @@ function ability(game)
 		{
 			dude.xvel -= DASHSPEED;
 		}
+	}
+
+	ability_image.destroy();
+	if(dude.ability2 != "none")
+	{
+		dude.ability = "none";
+		swapAbilities(game);
+	}
+	else
+	{
+		dude.ability = "none";
 	}
 }
 
@@ -882,4 +931,32 @@ function gameOver(game)
 		game_start_time = game.time.now;
 		hol_up_a_min = false;
 	},1000);
+}
+
+function swapAbilities(game)
+{
+	console.log(dude.ability, dude.ability2)
+	if(dude.ability2 == "none")
+	{
+		return;
+	}
+	let temp_ability = dude.ability;
+	dude.ability = dude.ability2;
+	dude.ability2 = temp_ability;
+
+	ability_image.destroy();
+	ability_image2.destroy();
+	
+	for(let i = 0; i < CROP_ABILITIES.length; i++)
+	{
+		if(CROP_ABILITIES[i] == dude.ability)
+			ability_image = game.add.image(385, 210, CROP_NAMES[[i]]).setScale(1).setScrollFactor(0).setDepth(5);
+		
+		if(CROP_ABILITIES[i] == dude.ability2)
+			ability_image2 = game.add.image(410, 210, CROP_NAMES[[i]]).setScale(1).setScrollFactor(0).setDepth(5);
+			
+	}
+	
+	
+
 }
