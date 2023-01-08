@@ -46,7 +46,7 @@ const LEVELS =
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[1, 0, 2, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[1, 0, 2, 0, 0, 3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -107,8 +107,8 @@ const LEVELS =
 	},
 ]
 
-const CROP_ABILITIES = ["doublejump","dash"];
-const CROP_NAMES = ["raspberry", "rice", "rose"]
+const CROP_ABILITIES = ["doublejump","dash", "none", "walljump"];
+const CROP_NAMES = ["raspberry", "rice", "rose", "wallnut"]
 const tile_images = [];
 const crop_sprites = [];
 const swoosh_sprites = [];
@@ -220,6 +220,16 @@ export default new Phaser.Class({
 			{frameWidth: 20, frameHeight: 16}
 		);
 
+		this.load.spritesheet('wallnut',
+			'assets/sprites/wallnut.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
+		this.load.spritesheet('bw_wallnut',
+			'assets/sprites/bw_wallnut.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
 		this.load.spritesheet('rose',
 			'assets/sprites/rose.png',
 			{frameWidth: 20, frameHeight: 16}
@@ -236,7 +246,8 @@ export default new Phaser.Class({
 
 		//audio
 		//the spot
-		this.load.audio("game_theme", "assets/music/game_theme.mp3");
+		this.load.audio("game_theme", "assets/music/game_theme2.mp3");
+
 		this.load.audio("attack", "assets/soundfx/attack.mp3");
 		this.load.audio("wall_hit", "assets/soundfx/wall_hit.wav");
 		this.load.audio("plant_hit", "assets/soundfx/plant_hit.mp3");
@@ -313,6 +324,20 @@ export default new Phaser.Class({
 		this.anims.create({
             key: "bw_rice",
             frames: this.anims.generateFrameNumbers("bw_rice", {start: 0, end: 3}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
+            key: "wallnut",
+            frames: this.anims.generateFrameNumbers("wallnut", {start: 0, end: 2}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
+            key: "bw_wallnut",
+            frames: this.anims.generateFrameNumbers("bw_wallnut", {start: 0, end: 2}),
             frameRate: 8,
 			repeat: -1
         });
@@ -768,6 +793,28 @@ function ability(game)
 		{
 			dude.xvel -= DASHSPEED;
 		}
+	}
+
+	
+	if(dude.ability == "walljump")
+	{
+		console.log("in")
+		// wall-left
+		if(LEVELS[dude.level].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][Math.floor(dude.sprite.x/TILE_SIZE) - 1])
+		{
+			console.log("left")
+			dude.xvel = 4;
+			dude.yvel = -4;
+		}
+		//wall right
+		else if(LEVELS[dude.level].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][Math.floor(dude.sprite.x/TILE_SIZE) + 1])
+		{
+			console.log("right")
+			dude.xvel = -4;
+			dude.yvel = -4;
+		}
+		else
+			return;
 	}
 
 	ability_image.destroy();
