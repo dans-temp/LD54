@@ -26,7 +26,58 @@ const LEVELS =
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[131, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 0, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[131, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 388, 0, 0],
+			[131, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[131, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 132, 0, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 1, 196, 196, 196, 196, 196, 196]
+		],
+		crops:
+		[
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[1, 0, 2, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		]
+	},
+	{
+		level: 2,
+		width: 100,
+		height: 20,
+		tiles: 
+		[
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 196, 196, 196, 196, 196, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[131, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 0, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[131, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[131, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 0, 0, 132, 132, 132, 132, 132, 0, 132, 132, 132, 132, 132, 132, 132, 132, 132, 132, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 132, 132, 132, 1, 0, 0, 1, 196, 196, 196, 196, 196, 196]
 		],
 		crops:
@@ -49,18 +100,19 @@ const LEVELS =
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		]
-	}
+	},
 ]
 
 const CROP_ABILITIES = ["doublejump","dash"];
-const CROP_NAMES = ["raspberry", "rice"]
+const CROP_NAMES = ["raspberry", "rice", "rose"]
 const crop_sprites = [];
 const swoosh_sprites = [];
 let regeneration_list = [];
 let backup_crops = [];
+let timer = 0;
 
 // PHYSICS
 const RUN_ACCEL = 0.1;
@@ -95,6 +147,7 @@ const dude = {
 let next_attack = dude.attack_cooldown;
 let next_abiility = dude.ability_cooldown;
 let reload_crops = false;
+let level_complete = false;
 
 export default new Phaser.Class({
 	Extends: Phaser.Scene,
@@ -155,6 +208,11 @@ export default new Phaser.Class({
 
 		this.load.spritesheet('bw_rice',
 			'assets/sprites/bw_rice.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
+		this.load.spritesheet('rose',
+			'assets/sprites/rose.png',
 			{frameWidth: 20, frameHeight: 16}
 		);
 
@@ -233,8 +291,15 @@ export default new Phaser.Class({
 
 		this.anims.create({
             key: "bw_rice",
-            frames: this.anims.generateFrameNumbers("bw_rice", {start: 0, end: 4}),
+            frames: this.anims.generateFrameNumbers("bw_rice", {start: 0, end: 3}),
             frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
+            key: "rose",
+            frames: this.anims.generateFrameNumbers("rose", {start: 0, end: 3}),
+            frameRate: 3,
 			repeat: -1
         });
 
@@ -270,25 +335,24 @@ export default new Phaser.Class({
 		});
 
 		//generate level
-		for(let i = 0; i < LEVELS[0].tiles.length; i++)
-		{
-			for(let j = 0; j < LEVELS[0].tiles[i].length; j++)
-			{
-				if(LEVELS[0].tiles[i][j] != 0)
-				{
-					this.add.image(j*TILE_SIZE, i*TILE_SIZE, "tiles", "floor-1").setScale(1).setOrigin(0,0);
-				}
-			}
-		}
+		generateLevel(this);
 		//crops
 		loadCrops(this);
 
 
 		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,W,A,S,D,E,R,SPACE");
+		this.ui = {
+			top_hud_bg: this.add.graphics().fillStyle(0x000000, 0.7).fillRect(0, 0, WIDTH_CANVAS, 20).setPosition(0, 200),
+            text_timer: this.add.text(300, 206, 1000 + timer + " SECONDS", {fontSize: "10px", fill: "white"}),
+            text_level: this.add.text(450, 206, "LEVEL: " + dude.level+1, {fontSize: "10px", fill: "white"}),
+        };
+
+		for(const key_object in this.ui)
+			this.ui[key_object].setScrollFactor(0).setDepth(4);
 
 		dude.sprite = this.add.sprite(50, 50, 'dude').setDisplaySize(20, 16).setOrigin(0.5, 1).setDepth(4);
 		this.cameras.main.startFollow(dude.sprite);
-		this.cameras.main.setBounds(0, 0, LEVELS[0].width*TILE_SIZE, LEVELS[0].height*TILE_SIZE);
+		this.cameras.main.setBounds(0, 0, LEVELS[dude.level].width*TILE_SIZE, LEVELS[dude.level].height*TILE_SIZE);
 		this.cameras.main.setZoom(3);
 		dude.sprite.play("idle");
 
@@ -300,6 +364,27 @@ export default new Phaser.Class({
 		{
 			loadCrops(this);
 			reload_crops = false;
+		}
+
+		if(level_complete == true)
+		{
+			const level_done_text = this.add.text(400,300, "LEVEL COMPLETE", {fontFamily: FONT_TITLE, color: "white", fontSize: "24px"}).setOrigin(0.5).setScrollFactor(0).setDepth(4);
+
+			// dude.sprite.x = dude.x_old;
+			// dude.sprite.y = dude.y_old;
+			// setTimeout(function(){
+            //     level_done_text.setText("");
+			// 	regeneration_list = [];
+			// 	for(let j = 0; j < crop_sprites.length; j++)
+			// 	{
+			// 		crop_sprites[j].sprite.destroy();
+			// 	}
+			// 	dude.level ++;
+			// 	generateLevel(this);
+			// 	loadCrops(this);
+			// 	dude.sprite.x = 100;
+			// 	dude.sprite.y = 200;
+            // },2000);
 		}
 		const left = this.cursors.A.isDown || this.cursors.LEFT.isDown;
 		const right = this.cursors.D.isDown || this.cursors.RIGHT.isDown;
@@ -390,9 +475,9 @@ export default new Phaser.Class({
 			dude.sprite.x = dude.width/2;
 			dude.xvel = 0;
 		}
-		else if(dude.sprite.x > LEVELS[0].width*TILE_SIZE - dude.width/2)
+		else if(dude.sprite.x > LEVELS[dude.level].width*TILE_SIZE - dude.width/2)
 		{
-			dude.sprite.x = LEVELS[0].width*TILE_SIZE - dude.width/2 - EPSILON;
+			dude.sprite.x = LEVELS[dude.level].width*TILE_SIZE - dude.width/2 - EPSILON;
 			dude.xvel = 0;
 		}
 
@@ -412,7 +497,7 @@ export default new Phaser.Class({
 			}
 			for(let i = 0; i < max_range_x - min_range_x; i++)
 			{
-				const crop_index = LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
+				const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
 				if(crop_index)
 				{
 					dude.ability = CROP_ABILITIES[crop_index - 1];
@@ -422,9 +507,14 @@ export default new Phaser.Class({
 						regeneration_time: this.time.now + PLANT_REGEN,
 						index_row: index_row,
 						index_col: index_col,
-						value: LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
+						value: LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
 					});
-					LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i] = 0;
+					//rose killed
+					if(CROP_NAMES[(LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i])-1] == 'rose')
+					{
+						level_complete = true;
+					}
+					LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i] = 0;
 					for(let j = 0; j < crop_sprites.length; j++)
 					{
 						if(crop_sprites[j].index == Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE) + '-' + (min_range_x + i))
@@ -449,12 +539,12 @@ export default new Phaser.Class({
 			if(this.time.now > regeneration_list[i].regeneration_time)
 			{
 
-				LEVELS[0].crops[index_row][index_col] = regeneration_list[i].value;
+				LEVELS[dude.level].crops[index_row][index_col] = regeneration_list[i].value;
 				crop_sprites.push({
 					sprite: this.add.sprite(index_col*TILE_SIZE, index_row*TILE_SIZE).setScale(1).setOrigin(0,0),
 					index: index_row+'-'+index_col
 				});
-				const crop_name = CROP_NAMES[LEVELS[0].crops[index_row][index_col]- 1];
+				const crop_name = CROP_NAMES[LEVELS[dude.level].crops[index_row][index_col]- 1];
 				crop_sprites[crop_sprites.length-1].sprite.play("bw_"+crop_name);
 
 				regeneration_list.splice(i,1);
@@ -470,31 +560,26 @@ export default new Phaser.Class({
 		const index_col_left = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
 		const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
 
-		if(index_row + 1 >= LEVELS[0].height)
+		if(index_row + 1 >= LEVELS[dude.level].height)
 		{	
 			//game over
 			//player hit bottom
-			dude.falling = true;
 			dude.sprite.x = dude.x_old;
-
-			const game_over_text = this.add.text(dude.sprite.x, dude.sprite.y - HEIGHT_CANVAS/2, "GAME OVER", {fontFamily: FONT_TITLE, color: "white", fontSize: "18px"}).setOrigin(0.5).setDepth(2);
-			console.log("dead");
+			const game_over_text = this.add.text(400,300, "DEATH", {fontFamily: FONT_TITLE, color: "white", fontSize: "24px"}).setOrigin(0.5).setScrollFactor(0).setDepth(4);
 			setTimeout(function(){
                 game_over_text.setText("");
-                dude.sprite.x = 100;
-                dude.sprite.y = 200;
-				dude.yvel = GRAVITY;
 				regeneration_list = [];
-				console.log(this)
 				LEVELS[dude.level].crops = backup_crops;
 				for(let j = 0; j < crop_sprites.length; j++)
 				{
 					crop_sprites[j].sprite.destroy();
 				}
 				reload_crops = true;
+				dude.sprite.x = 100;
+				dude.sprite.y = 200;
             },2000);
 		}
-		else if(!LEVELS[0].tiles[index_row + 1][index_col_left] && !LEVELS[0].tiles[index_row + 1][index_col_right])
+		else if(!LEVELS[dude.level].tiles[index_row + 1][index_col_left] && !LEVELS[dude.level].tiles[index_row + 1][index_col_right])
 		{
 			dude.falling = true;
 		}
@@ -512,7 +597,7 @@ export default new Phaser.Class({
 
 function attacks(game)
 {
-	if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
+	if(dude.sprite.y > ((LEVELS[dude.level].height)*TILE_SIZE))
 		return;
 	//x range
 	let min_range_x;
@@ -543,7 +628,7 @@ function attacks(game)
 	//check for hit
 	for(let i = 0; i < max_range_x - min_range_x; i ++)
 	{
-		if(LEVELS[0].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i])
+		if(LEVELS[dude.level].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i])
 		{
 			if(dude.facing_right)
 				dude.xvel -= MAX_SPEED;
@@ -551,7 +636,7 @@ function attacks(game)
 			else
 				dude.xvel += MAX_SPEED;
 		}
-		const crop_index = LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i];
+		const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i];
 		if(crop_index)
 		{
 			dude.ability = CROP_ABILITIES[crop_index - 1];
@@ -561,9 +646,14 @@ function attacks(game)
 				regeneration_time: game.time.now + PLANT_REGEN,
 				index_row: index_row,
 				index_col: index_col,
-				value: LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
+				value: LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
 			});
-			LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i] = 0;
+			//rose killed
+			if(CROP_NAMES[(LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i])-1] == 'rose')
+			{
+				level_complete = true;
+			}
+			LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i] = 0;
 			for(let j = 0; j < crop_sprites.length; j++)
 			{
 				if(crop_sprites[j].index == Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE) + '-' + (min_range_x + i))
@@ -584,7 +674,7 @@ function attacks(game)
 
 function ability(game)
 {
-	if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
+	if(dude.sprite.y > ((LEVELS[dude.level].height)*TILE_SIZE))
 		return;
 		
 	if(dude.ability == "doublejump")
@@ -608,7 +698,7 @@ function ability(game)
 
 function handleCollision(game)
 {
-	if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
+	if(dude.sprite.y > ((LEVELS[dude.level].height)*TILE_SIZE))
 		return;
 
 	function collideTile(index_row, index_col)
@@ -660,63 +750,77 @@ function handleCollision(game)
 	// top left
 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 
 	// top right
 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 
 	// bottom left
 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 
 	// bottom right
 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 
 	// top left again
 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 
 	// bottom left again
 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 
 	// top right again
 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 
 	// bottom right again
 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
-	if(LEVELS[0].tiles[index_row][index_col])
+	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
 }
 
 function loadCrops(game)
 {
-	for(let i = 0; i < LEVELS[0].crops.length; i++)
+	for(let i = 0; i < LEVELS[dude.level].crops.length; i++)
 	{
-		for(let j = 0; j < LEVELS[0].crops[i].length; j++)
+		for(let j = 0; j < LEVELS[dude.level].crops[i].length; j++)
 		{
-			if(LEVELS[0].crops[i][j] != 0)
+			if(LEVELS[dude.level].crops[i][j] != 0)
 			{
 				crop_sprites.push({
 					sprite: game.add.sprite(j*TILE_SIZE, i*TILE_SIZE).setScale(1).setOrigin(0,0),
 					index: i+'-'+j
 				});
 
-				const crop_name = CROP_NAMES[LEVELS[0].crops[i][j]- 1];
+				const crop_name = CROP_NAMES[LEVELS[dude.level].crops[i][j]- 1];
 				crop_sprites[crop_sprites.length-1].sprite.play(crop_name);
+			}
+		}
+	}
+}
+
+function generateLevel(game)
+{
+	for(let i = 0; i < LEVELS[dude.level].tiles.length; i++)
+	{
+		for(let j = 0; j < LEVELS[dude.level].tiles[i].length; j++)
+		{
+			if(LEVELS[dude.level].tiles[i][j] != 0)
+			{
+				game.add.image(j*TILE_SIZE, i*TILE_SIZE, "tiles", "floor-1").setScale(1).setOrigin(0,0);
 			}
 		}
 	}
