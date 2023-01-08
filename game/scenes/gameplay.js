@@ -47,7 +47,7 @@ const LEVELS =
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -59,6 +59,7 @@ const CROP_ABILITIES = ["doublejump","dash"];
 const CROP_NAMES = ["raspberry", "rice"]
 const crop_sprites = [];
 const swoosh_sprites = [];
+const regeneration_list = [];
 
 // PHYSICS
 const RUN_ACCEL = 0.1;
@@ -68,6 +69,7 @@ const JUMPSPEED = 3.4;
 const DASHSPEED = 15;
 const DASH_DECEL = 2;
 const GRAVITY = 0.15;
+const PLANT_REGEN = 3000
 
 // TILES
 const TILE_SIZE = 16;
@@ -144,6 +146,11 @@ export default new Phaser.Class({
 			{frameWidth: 20, frameHeight: 16}
 		);
 
+		this.load.spritesheet('mound',
+			'assets/sprites/mound.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
 		this.load.atlas("tiles", "assets/dungeon_tiles.png", "assets/dungeon_tiles.json");
 		this.load.image('leaf', 'assets/sprites/leaf.png');
 		this.load.image('dirt', 'assets/sprites/dirt.png');
@@ -205,6 +212,12 @@ export default new Phaser.Class({
 			repeat: -1
         });
 
+		this.anims.create({
+            key: "mound",
+            frames: this.anims.generateFrameNumbers("mound", {start: 0, end: 0}),
+            frameRate: 8,
+			repeat: -1
+        });
 
 		this.leaf_particles = this.add.particles("leaf");
 		this.emitter_leaf = this.leaf_particles.createEmitter({
@@ -373,7 +386,7 @@ export default new Phaser.Class({
 		}
 
 		//dash attack
-		if(dude.xvel > MAX_SPEED)
+		if(Math.abs(dude.xvel) > MAX_SPEED)
 		{
 			let max_range_x, min_range_x
 			if(dude.x_old < dude.sprite.x)
@@ -392,12 +405,25 @@ export default new Phaser.Class({
 				if(crop_index)
 				{
 					dude.ability = CROP_ABILITIES[crop_index - 1];
+					const index_row = Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)
+					const index_col = min_range_x + i;
+					regeneration_list.push({
+						regeneration_time: this.time.now + PLANT_REGEN,
+						index_row: index_row,
+						index_col: index_col,
+						value: LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
+					});
 					LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i] = 0;
 					for(let j = 0; j < crop_sprites.length; j++)
 					{
 						if(crop_sprites[j].index == Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE) + '-' + (min_range_x + i))
 						{
 							crop_sprites[j].sprite.destroy();
+							crop_sprites.push({
+								sprite: this.add.sprite( index_col* TILE_SIZE, index_row* TILE_SIZE).setScale(1).setOrigin(0,0),
+								index: ((min_range_x + i)*TILE_SIZE)+'-'+Math.floor((dude.sprite.y-(dude.height/2)))*TILE_SIZE
+							});
+							crop_sprites[crop_sprites.length-1].sprite.play("mound");
 						}
 					}
 					this.emitter_leaf.explode(30, (min_range_x + i)*TILE_SIZE + dude.width/2, Math.floor((dude.sprite.y-(dude.height/2))));
@@ -405,6 +431,24 @@ export default new Phaser.Class({
 			}
 		}
 
+		for(let i = 0; i < regeneration_list.length; i++)
+		{
+			const index_row = regeneration_list[i].index_row;
+			const index_col = regeneration_list[i].index_col;
+			if(this.time.now > regeneration_list[i].regeneration_time)
+			{
+
+				LEVELS[0].crops[index_row][index_col] = regeneration_list[i].value;
+				crop_sprites.push({
+					sprite: this.add.sprite(index_col*TILE_SIZE, index_row*TILE_SIZE).setScale(1).setOrigin(0,0),
+					index: index_row+'-'+index_col
+				});
+				const crop_name = CROP_NAMES[LEVELS[0].crops[index_row][index_col]- 1];
+				crop_sprites[crop_sprites.length-1].sprite.play(crop_name);
+
+				regeneration_list.splice(i,1);
+			}
+		}
 
 		handleCollision(this);
 
@@ -469,18 +513,35 @@ function attacks(game)
 	{
 		if(LEVELS[0].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i])
 		{
-			console.log('strike wall');
+			if(dude.facing_right)
+				dude.xvel -= MAX_SPEED;
+				
+			else
+				dude.xvel += MAX_SPEED;
 		}
 		const crop_index = LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i];
 		if(crop_index)
 		{
 			dude.ability = CROP_ABILITIES[crop_index - 1];
+			const index_col = min_range_x + i;
+			const index_row = Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE);
+			regeneration_list.push({
+				regeneration_time: game.time.now + PLANT_REGEN,
+				index_row: index_row,
+				index_col: index_col,
+				value: LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
+			});
 			LEVELS[0].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i] = 0;
 			for(let j = 0; j < crop_sprites.length; j++)
 			{
 				if(crop_sprites[j].index == Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE) + '-' + (min_range_x + i))
 				{
 					crop_sprites[j].sprite.destroy();
+					crop_sprites.push({
+						sprite: game.add.sprite( index_col* TILE_SIZE, index_row* TILE_SIZE).setScale(1).setOrigin(0,0),
+						index: ((min_range_x + i)*TILE_SIZE)+'-'+Math.floor((dude.sprite.y-(dude.height/2)))*TILE_SIZE
+					});
+					crop_sprites[crop_sprites.length-1].sprite.play("mound");
 				}
 			}
 			game.emitter_leaf.explode(30, (min_range_x + i)*TILE_SIZE + dude.width/2, Math.floor((dude.sprite.y-(dude.height/2))));
