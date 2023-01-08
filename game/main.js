@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function()
 		height: HEIGHT_CANVAS/2,
 		resolution: 5,
 		scene: [scene_menu, gameplay],
-		backgroundColor: 0x202838,
+		//0x202838
+		backgroundColor: 0x073275,
 		physics: {
 			default: "arcade",
 			arcade: {
