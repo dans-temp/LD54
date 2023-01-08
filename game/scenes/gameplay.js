@@ -59,7 +59,8 @@ const CROP_ABILITIES = ["doublejump","dash"];
 const CROP_NAMES = ["raspberry", "rice"]
 const crop_sprites = [];
 const swoosh_sprites = [];
-const regeneration_list = [];
+let regeneration_list = [];
+let backup_crops = [];
 
 // PHYSICS
 const RUN_ACCEL = 0.1;
@@ -85,14 +86,15 @@ const dude = {
 	falling: true,
 	facing_right: true,
 	attack_range: 2,
-	attack_cooldown: 500,
-	ability_cooldown: 500,
+	attack_cooldown: 250,
+	ability_cooldown: 300,
 	ability: "none",
-    level: 1
+    level: 0
 };
 
 let next_attack = dude.attack_cooldown;
-let next_abiility = dude.ability_cooldown
+let next_abiility = dude.ability_cooldown;
+let reload_crops = false;
 
 export default new Phaser.Class({
 	Extends: Phaser.Scene,
@@ -141,8 +143,18 @@ export default new Phaser.Class({
 			{frameWidth: 20, frameHeight: 16}
 		);
 
+		this.load.spritesheet('bw_raspberry',
+			'assets/sprites/bw_raspberry.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
 		this.load.spritesheet('rice',
 			'assets/sprites/rice.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
+		this.load.spritesheet('bw_rice',
+			'assets/sprites/bw_rice.png',
 			{frameWidth: 20, frameHeight: 16}
 		);
 
@@ -206,8 +218,22 @@ export default new Phaser.Class({
         });
 
 		this.anims.create({
+            key: "bw_raspberry",
+            frames: this.anims.generateFrameNumbers("bw_raspberry", {start: 0, end: 6}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
             key: "rice",
             frames: this.anims.generateFrameNumbers("rice", {start: 0, end: 4}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
+            key: "bw_rice",
+            frames: this.anims.generateFrameNumbers("bw_rice", {start: 0, end: 4}),
             frameRate: 8,
 			repeat: -1
         });
@@ -255,22 +281,7 @@ export default new Phaser.Class({
 			}
 		}
 		//crops
-		for(let i = 0; i < LEVELS[0].crops.length; i++)
-		{
-			for(let j = 0; j < LEVELS[0].crops[i].length; j++)
-			{
-				if(LEVELS[0].crops[i][j] != 0)
-				{
-					crop_sprites.push({
-						sprite: this.add.sprite(j*TILE_SIZE, i*TILE_SIZE).setScale(1).setOrigin(0,0),
-						index: i+'-'+j
-					});
-
-					const crop_name = CROP_NAMES[LEVELS[0].crops[i][j]- 1];
-					crop_sprites[crop_sprites.length-1].sprite.play(crop_name);
-				}
-			}
-		}
+		loadCrops(this);
 
 
 		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,W,A,S,D,E,R,SPACE");
@@ -278,11 +289,18 @@ export default new Phaser.Class({
 		dude.sprite = this.add.sprite(50, 50, 'dude').setDisplaySize(20, 16).setOrigin(0.5, 1).setDepth(4);
 		this.cameras.main.startFollow(dude.sprite);
 		this.cameras.main.setBounds(0, 0, LEVELS[0].width*TILE_SIZE, LEVELS[0].height*TILE_SIZE);
-		this.cameras.main.setZoom(4);
+		this.cameras.main.setZoom(3);
 		dude.sprite.play("idle");
+
+		backup_crops = LEVELS[dude.level].crops;
 	},
 	update()
 	{
+		if(reload_crops)
+		{
+			loadCrops(this);
+			reload_crops = false;
+		}
 		const left = this.cursors.A.isDown || this.cursors.LEFT.isDown;
 		const right = this.cursors.D.isDown || this.cursors.RIGHT.isDown;
 		const jump = this.cursors.W.isDown || this.cursors.UP.isDown;
@@ -366,13 +384,6 @@ export default new Phaser.Class({
 			dude.sprite.y = dude.height;
 			dude.yvel = 0;
 		}
-		else if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
-		{
-			dude.falling = false;
-			this.emitter_dirt.explode(20, dude.sprite.x, dude.sprite.y);
-			dude.sprite.y = LEVELS[0].height*TILE_SIZE - EPSILON;
-			dude.yvel = 0;
-		}
 
 		if(dude.sprite.x < dude.width/2)
 		{
@@ -444,7 +455,7 @@ export default new Phaser.Class({
 					index: index_row+'-'+index_col
 				});
 				const crop_name = CROP_NAMES[LEVELS[0].crops[index_row][index_col]- 1];
-				crop_sprites[crop_sprites.length-1].sprite.play(crop_name);
+				crop_sprites[crop_sprites.length-1].sprite.play("bw_"+crop_name);
 
 				regeneration_list.splice(i,1);
 			}
@@ -460,9 +471,28 @@ export default new Phaser.Class({
 		const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
 
 		if(index_row + 1 >= LEVELS[0].height)
-		{
+		{	
+			//game over
 			//player hit bottom
+			dude.falling = true;
+			dude.sprite.x = dude.x_old;
+
+			const game_over_text = this.add.text(dude.sprite.x, dude.sprite.y - HEIGHT_CANVAS/2, "GAME OVER", {fontFamily: FONT_TITLE, color: "white", fontSize: "18px"}).setOrigin(0.5).setDepth(2);
 			console.log("dead");
+			setTimeout(function(){
+                game_over_text.setText("");
+                dude.sprite.x = 100;
+                dude.sprite.y = 200;
+				dude.yvel = GRAVITY;
+				regeneration_list = [];
+				console.log(this)
+				LEVELS[dude.level].crops = backup_crops;
+				for(let j = 0; j < crop_sprites.length; j++)
+				{
+					crop_sprites[j].sprite.destroy();
+				}
+				reload_crops = true;
+            },2000);
 		}
 		else if(!LEVELS[0].tiles[index_row + 1][index_col_left] && !LEVELS[0].tiles[index_row + 1][index_col_right])
 		{
@@ -482,6 +512,8 @@ export default new Phaser.Class({
 
 function attacks(game)
 {
+	if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
+		return;
 	//x range
 	let min_range_x;
 	let max_range_x;
@@ -552,6 +584,9 @@ function attacks(game)
 
 function ability(game)
 {
+	if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
+		return;
+		
 	if(dude.ability == "doublejump")
 	{
 		dude.yvel = -JUMPSPEED;
@@ -573,12 +608,17 @@ function ability(game)
 
 function handleCollision(game)
 {
+	if(dude.sprite.y > ((LEVELS[0].height)*TILE_SIZE))
+		return;
+
 	function collideTile(index_row, index_col)
 	{
 		const y_top = index_row*TILE_SIZE;
 		const y_bottom = y_top + TILE_SIZE;
 		const x_left = index_col*TILE_SIZE;
-		const x_right = x_left + TILE_SIZE ;
+		const x_right = x_left + TILE_SIZE;
+
+
 
 		//down
 		if(dude.sprite.y - EPSILON > y_top && dude.y_old - EPSILON <= y_top)
@@ -660,4 +700,24 @@ function handleCollision(game)
 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
 	if(LEVELS[0].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
+}
+
+function loadCrops(game)
+{
+	for(let i = 0; i < LEVELS[0].crops.length; i++)
+	{
+		for(let j = 0; j < LEVELS[0].crops[i].length; j++)
+		{
+			if(LEVELS[0].crops[i][j] != 0)
+			{
+				crop_sprites.push({
+					sprite: game.add.sprite(j*TILE_SIZE, i*TILE_SIZE).setScale(1).setOrigin(0,0),
+					index: i+'-'+j
+				});
+
+				const crop_name = CROP_NAMES[LEVELS[0].crops[i][j]- 1];
+				crop_sprites[crop_sprites.length-1].sprite.play(crop_name);
+			}
+		}
+	}
 }
