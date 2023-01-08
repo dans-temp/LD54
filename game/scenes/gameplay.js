@@ -359,7 +359,8 @@ export default new Phaser.Class({
             text_level: this.add.text(450, 206, "LEVEL: " + (dude.level + 1), {fontSize: "10px", fill: "white"}),
 			gold_outline: this.add.graphics().fillStyle(0x705711, 1).fillRect(375, 0, 20, 20).setPosition(0, 200),
 			current_power: this.add.graphics().fillStyle(0x000000, 1).fillRect(375, 0, 18, 18).setPosition(1, 201),
-			second_power: this.add.graphics().fillStyle(0x000000, 1).fillRect(400, 0, 20, 20).setPosition(0, 200)
+			second_power: this.add.graphics().fillStyle(0x000000, 1).fillRect(400, 0, 20, 20).setPosition(0, 200),
+			
         };
 
 		for(const key_object in this.ui)
@@ -371,7 +372,8 @@ export default new Phaser.Class({
 		this.cameras.main.setZoom(3);
 		dude.sprite.play("idle");
 
-		backup_crops = LEVELS[dude.level].crops;
+		backup_crops = LEVELS[dude.level].crops.slice();
+		console.log(backup_crops);
 	},
 	update()
 	{
@@ -405,16 +407,21 @@ export default new Phaser.Class({
 		const restart = this.cursors.ESC.isDown;
 		const swap = this.cursors.Q.isDown;
 
-		if(restart)
+		if(restart && this.time.now > next_swap)
 		{
+			next_swap = this.time.now + swap_cooldown;
 			game_start_time = this.time.now;
 			regeneration_list = [];
-			LEVELS[dude.level].crops = backup_crops;
+			LEVELS[dude.level].crops = backup_crops.slice() ;
 			for(let j = 0; j < crop_sprites.length; j++)
 			{
 				crop_sprites[j].sprite.destroy();
 			}
 			reload_crops = true;
+			ability_image?.destroy();
+			ability_image2?.destroy();
+			dude.ability = "none";
+			dude.ability2 = "none";
 			dude.sprite.x = 100;
 			dude.sprite.y = 200;
 			
@@ -462,6 +469,8 @@ export default new Phaser.Class({
 		//dash decel
 		if(Math.abs(dude.xvel) > MAX_SPEED)
 		{
+			if(!dude.falling)
+				this.emitter_dirt.explode(80, dude.sprite.x, dude.sprite.y);
 			if(dude.xvel > 0)
 				dude.xvel -= DASH_DECEL;
 			else
@@ -533,12 +542,12 @@ export default new Phaser.Class({
 				const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
 				if(crop_index)
 				{
-					if(dude.ability == "none")
+					if(dude.ability == "none" && CROP_NAMES[crop_index - 1] != "rose")
 					{
 						dude.ability = CROP_ABILITIES[crop_index - 1];
 						ability_image = this.add.image(385, 210, CROP_NAMES[[crop_index - 1]]).setScale(1).setScrollFactor(0).setDepth(5);
 					}
-					else
+					else if (CROP_NAMES[crop_index - 1] != "rose")
 					{
 						if(dude.ability2 != "none")
 							ability_image2.destroy();
@@ -672,12 +681,12 @@ function attacks(game)
 		const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i];
 		if(crop_index)
 		{
-			if(dude.ability == "none")
+			if(dude.ability == "none" && CROP_NAMES[crop_index - 1] != "rose")
 			{
 				dude.ability = CROP_ABILITIES[crop_index - 1];
 				ability_image = game.add.image(385, 210, CROP_NAMES[[crop_index - 1]]).setScale(1).setScrollFactor(0).setDepth(5);
 			}
-			else
+			else if (CROP_NAMES[crop_index - 1] != "rose")
 			{
 				if(dude.ability2 != "none")
 					ability_image2.destroy();
@@ -899,12 +908,16 @@ function nextLevel(game)
 		{
 			crop_sprites[j].sprite.destroy();
 		}
+		ability_image?.destroy();
+		ability_image2?.destroy();
+		dude.ability = "none";
+		dude.ability2 = "none";
 		dude.level ++;
 		generateLevel(game);
 		loadCrops(game);
 		dude.sprite.x = 100;
 		dude.sprite.y = 200;
-		backup_crops = LEVELS[dude.level].crops;
+		backup_crops = LEVELS[dude.level].crops.slice();
 		game.ui.text_level.setText("LEVEL: " + (dude.level + 1));
 		game_start_time = game.time.now;
 		level_complete = false;
@@ -920,11 +933,15 @@ function gameOver(game)
 	setTimeout(function(){
 		game_over_text.setText("");
 		regeneration_list = [];
-		LEVELS[dude.level].crops = backup_crops;
+		LEVELS[dude.level].crops = backup_crops.slice();
 		for(let j = 0; j < crop_sprites.length; j++)
 		{
 			crop_sprites[j].sprite.destroy();
 		}
+		ability_image?.destroy();
+		ability_image2?.destroy();
+		dude.ability = "none";
+		dude.ability2 = "none";
 		reload_crops = true;
 		dude.sprite.x = 100;
 		dude.sprite.y = 200;
@@ -935,7 +952,6 @@ function gameOver(game)
 
 function swapAbilities(game)
 {
-	console.log(dude.ability, dude.ability2)
 	if(dude.ability2 == "none")
 	{
 		return;
