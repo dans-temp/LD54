@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function()
 		scene: [scene_menu, gameplay],
 		//0x202838
 		backgroundColor: 0x073275,
+		input: {
+			gamepad: true
+		},
 		physics: {
 			default: "arcade",
 			arcade: {

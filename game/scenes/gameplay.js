@@ -1060,6 +1060,7 @@ export default new Phaser.Class({
 
 
 		this.add.image(400, 300, 'background').setScrollFactor(0).setDepth(-2).setScale(2.1);
+		this.input.gamepad.start();
 		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,N,W,A,S,D,M,ENTER,SPACE");
 		this.ui = {
 			top_hud_bg: this.add.graphics().fillStyle(0x000000, 0.7).fillRect(0, 0, WIDTH_CANVAS, 20).setPosition(0, 200),
@@ -1110,14 +1111,16 @@ export default new Phaser.Class({
 			reload_crops = false;
 		}
 
-		const left = this.cursors.A.isDown || this.cursors.LEFT.isDown;
-		const right = this.cursors.D.isDown || this.cursors.RIGHT.isDown;
-		const jump = this.cursors.W.isDown || this.cursors.UP.isDown;
-		const down = this.cursors.S.isDown || this.cursors.DOWN.isDown;
-		const use_ability = this.cursors.N.isDown;
-		const attack = this.cursors.SPACE.isDown;
+		const gamepad = this.input.gamepad.gamepads[0];
+
+		const left = this.cursors.A.isDown || this.cursors.LEFT.isDown  || (gamepad && (gamepad.left || gamepad.leftStick.x < -0.1));
+		const right = this.cursors.D.isDown || this.cursors.RIGHT.isDown || (gamepad && (gamepad.right || gamepad.leftStick.x > 0.1));
+		const jump = this.cursors.W.isDown || this.cursors.UP.isDown || (gamepad && gamepad.A);
+		const down = this.cursors.S.isDown
+		const use_ability = this.cursors.N.isDown || (gamepad && gamepad.X);
+		const attack = this.cursors.SPACE.isDown || (gamepad && gamepad.B);
 		const restart = this.cursors.ENTER.isDown;
-		const swap = this.cursors.M.isDown;
+		const swap = this.cursors.M.isDown || (gamepad && gamepad.Y);
 
 		if(restart && this.time.now > next_swap)
 		{
