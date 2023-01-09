@@ -24,7 +24,7 @@ const LEVELS =
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 131, 131, 131, 131, 131, 131, 0, 0, 0, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 133, 133, 133, 133, 133, 133, 133, 133, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 196, 196, 196, 196, 196, 196],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -109,7 +109,7 @@ const LEVELS =
 
 const CROP_ABILITIES = ["doublejump","dash", "rose", "walljump","slam"];
 const CROP_NAMES = ["raspberry", "rice", "rose", "wallnut", "potato"]
-const TILE_MAP = ["rock", "grass"];
+const TILE_MAP = ["rock", "grass","spike_up","spike_right","spike_left","spike_down"];
 const tile_images = [];
 const crop_sprites = [];
 const swoosh_sprites = [];
@@ -259,6 +259,7 @@ export default new Phaser.Class({
 
 		this.load.image("rock", "assets/sprites/rock.png");
 		this.load.image("grass", "assets/sprites/grass.png");
+		this.load.image("spike_up", "assets/sprites/spike_up.png");
 		this.load.image('leaf', 'assets/sprites/leaf.png');
 		this.load.image('dirt', 'assets/sprites/dirt.png');
 		this.load.image('background', 'assets/background.png');
@@ -635,6 +636,16 @@ export default new Phaser.Class({
 				const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i]
 				if(crop_index)
 				{
+					if(crop_index < 0)
+					{
+						crop_index = Math.abs(crop_index);
+						if(dude.ability == CROP_ABILITIES[crop_index-1] || dude.ability2 == CROP_ABILITIES[crop_index-1])
+						{
+							game.sound.play("plant_hit", {volume: 0.4});
+							game.emitter_leaf.explode(30, (min_range_x + i)*TILE_SIZE + dude.width/2, Math.floor((dude.sprite.y-(dude.height/2))));
+							return;
+						}
+					}
 					if(dude.ability == "none" && CROP_NAMES[crop_index - 1] != "rose")
 					{
 						dude.ability = CROP_ABILITIES[crop_index - 1];
@@ -729,6 +740,10 @@ export default new Phaser.Class({
 		else if(!LEVELS[dude.level].tiles[index_row + 1][index_col_left] && !LEVELS[dude.level].tiles[index_row + 1][index_col_right])
 		{
 			dude.falling = true;
+		}
+		else if(TILE_MAP[LEVELS[dude.level].tiles[index_row + 1][index_col_left]-1].includes("spike") ||TILE_MAP[LEVELS[dude.level].tiles[index_row + 1][index_col_right]-1].includes("spike") )
+		{
+			death(this);
 		}
 		if(dude.falling)
 		{
@@ -918,11 +933,17 @@ function handleCollision(game)
 
 	function collideTile(index_row, index_col)
 	{
+
+		if(TILE_MAP[LEVELS[dude.level].tiles[index_row][index_col]-1].includes("spike"))
+		{
+			console.log('this one')
+			death(game);
+			return;
+		}
 		const y_top = index_row*TILE_SIZE;
 		const y_bottom = y_top + TILE_SIZE;
 		const x_left = index_col*TILE_SIZE;
 		const x_right = x_left + TILE_SIZE;
-
 
 
 		//down
@@ -1128,7 +1149,12 @@ function swapAbilities(game)
 			ability_image2 = game.add.image(410, 210, CROP_NAMES[[i]]).setScale(1).setScrollFactor(0).setDepth(5);
 			
 	}
-	
-	
+}
 
+
+function death(game)
+{
+	hol_up_a_min = true;
+	console.log('death');
+	gameOver(game);
 }
