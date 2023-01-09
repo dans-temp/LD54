@@ -46,7 +46,7 @@ const LEVELS =
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[1, 0, 2, 0, 0, 3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[1, 0, 2, 0, 0, 3, 0, 4, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -107,8 +107,8 @@ const LEVELS =
 	},
 ]
 
-const CROP_ABILITIES = ["doublejump","dash", "none", "walljump"];
-const CROP_NAMES = ["raspberry", "rice", "rose", "wallnut"]
+const CROP_ABILITIES = ["doublejump","dash", "rose", "walljump","slam"];
+const CROP_NAMES = ["raspberry", "rice", "rose", "wallnut", "potato"]
 const tile_images = [];
 const crop_sprites = [];
 const swoosh_sprites = [];
@@ -151,6 +151,7 @@ let next_abiility = dude.ability_cooldown;
 let reload_crops = false;
 let level_complete = false;
 let hol_up_a_min = false;
+let slamming = false;
 let timer;
 let game_start_time;
 let ability_image;
@@ -195,6 +196,11 @@ export default new Phaser.Class({
 			{frameWidth: 20, frameHeight: 16}
 		);
 
+		this.load.spritesheet('slam',
+			'assets/sprites/falling.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
 		this.load.spritesheet('swoosh',
 			'assets/sprites/swoosh.png',
 			{frameWidth: 16, frameHeight: 16}
@@ -230,6 +236,16 @@ export default new Phaser.Class({
 			{frameWidth: 20, frameHeight: 16}
 		);
 
+		this.load.spritesheet('potato',
+			'assets/sprites/potato.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
+		this.load.spritesheet('bw_potato',
+			'assets/sprites/bw_potato.png',
+			{frameWidth: 20, frameHeight: 16}
+		);
+
 		this.load.spritesheet('rose',
 			'assets/sprites/rose.png',
 			{frameWidth: 20, frameHeight: 16}
@@ -245,7 +261,6 @@ export default new Phaser.Class({
 		this.load.image('dirt', 'assets/sprites/dirt.png');
 
 		//audio
-		//the spot
 		this.load.audio("game_theme", "assets/music/game_theme2.mp3");
 
 		this.load.audio("attack", "assets/soundfx/attack.mp3");
@@ -254,6 +269,7 @@ export default new Phaser.Class({
 		this.load.audio("game_over", "assets/soundfx/game_over.mp3");
 		this.load.audio("level_complete", "assets/soundfx/level_complete.mp3");
 		this.load.audio("dash", "assets/soundfx/dash.mp3");
+		this.load.audio("slam", "assets/soundfx/land.mp3");
 
 
 	},
@@ -290,6 +306,13 @@ export default new Phaser.Class({
 		this.anims.create({
             key: "falling",
             frames: this.anims.generateFrameNumbers("falling", {start: 0, end: 2}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
+            key: "slam",
+            frames: this.anims.generateFrameNumbers("falling", {start: 0, end: 5}),
             frameRate: 8,
 			repeat: -1
         });
@@ -343,6 +366,20 @@ export default new Phaser.Class({
         });
 
 		this.anims.create({
+            key: "potato",
+            frames: this.anims.generateFrameNumbers("potato", {start: 0, end: 2}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
+            key: "bw_potato",
+            frames: this.anims.generateFrameNumbers("bw_potato", {start: 0, end: 2}),
+            frameRate: 8,
+			repeat: -1
+        });
+
+		this.anims.create({
             key: "rose",
             frames: this.anims.generateFrameNumbers("rose", {start: 0, end: 3}),
             frameRate: 3,
@@ -377,6 +414,18 @@ export default new Phaser.Class({
 			blendMode: "NORMAL",
 			on: false,
 			lifespan: 1000,
+			gravityY: 20
+		});
+
+		this.slam_particles = this.add.particles("dirt");
+		this.emitter_slam = this.slam_particles.createEmitter({
+			speed: {min: 5, max: 200},
+			angle: {min: 160, max: 340},
+			alpha: {start: 1, end: 0},
+			scale:1,
+			blendMode: "NORMAL",
+			on: false,
+			lifespan: 500,
 			gravityY: 20
 		});
 
@@ -648,6 +697,19 @@ export default new Phaser.Class({
 
 		handleCollision(this);
 
+		if(dude.falling && slamming)
+		{
+			dude.yvel = 7;
+		}
+		if(slamming && !dude.falling)
+		{
+			this.emitter_slam.emitParticle(50, dude.sprite.x, dude.sprite.y);
+			this.sound.play("slam", {volume: 0.5});
+			dude.yvel = -4;
+			slamming = false;
+		}
+			
+
 
 		// player coordinates
 		const index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
@@ -798,7 +860,6 @@ function ability(game)
 	
 	if(dude.ability == "walljump")
 	{
-		console.log("in")
 		// wall-left
 		if(LEVELS[dude.level].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][Math.floor(dude.sprite.x/TILE_SIZE) - 1])
 		{
@@ -812,6 +873,17 @@ function ability(game)
 			console.log("right")
 			dude.xvel = -4;
 			dude.yvel = -4;
+		}
+		else
+			return;
+	}
+
+	if(dude.ability == "slam")
+	{
+		if(dude.falling)
+		{
+			slamming = true;
+			dude.sprite.play("slam");
 		}
 		else
 			return;
