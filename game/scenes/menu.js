@@ -10,6 +10,7 @@ export default new Phaser.Class({
 	{
 		// TODO
 		this.load.audio("title_theme", "assets/music/title_theme.mp3");
+		
 	},
 	create: function()
 	{
