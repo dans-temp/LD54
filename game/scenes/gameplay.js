@@ -259,6 +259,7 @@ export default new Phaser.Class({
 		this.load.atlas("tiles", "assets/dungeon_tiles.png", "assets/dungeon_tiles.json");
 		this.load.image('leaf', 'assets/sprites/leaf.png');
 		this.load.image('dirt', 'assets/sprites/dirt.png');
+		this.load.image('background', 'assets/background.png');
 
 		//audio
 		this.load.audio("game_theme", "assets/music/game_theme2.mp3");
@@ -419,10 +420,10 @@ export default new Phaser.Class({
 
 		this.slam_particles = this.add.particles("dirt");
 		this.emitter_slam = this.slam_particles.createEmitter({
-			speed: {min: 5, max: 200},
+			speed: {min: 5, max: 140},
 			angle: {min: 160, max: 340},
 			alpha: {start: 1, end: 0},
-			scale:1,
+			scale:0.5,
 			blendMode: "NORMAL",
 			on: false,
 			lifespan: 500,
@@ -441,7 +442,7 @@ export default new Phaser.Class({
 		game_start_time = this.time.now;
 		timer = this.time.now -game_start_time;
 
-
+		this.add.image(400, 300, 'background').setScrollFactor(0).setDepth(-2).setScale(2.1);
 		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,Q,W,A,S,D,E,ESC,SPACE");
 		this.ui = {
 			top_hud_bg: this.add.graphics().fillStyle(0x000000, 0.7).fillRect(0, 0, WIDTH_CANVAS, 20).setPosition(0, 200),
@@ -682,13 +683,12 @@ export default new Phaser.Class({
 			const index_col = regeneration_list[i].index_col;
 			if(this.time.now > regeneration_list[i].regeneration_time)
 			{
-
-				LEVELS[dude.level].crops[index_row][index_col] = regeneration_list[i].value;
+				LEVELS[dude.level].crops[index_row][index_col] = -Math.abs(regeneration_list[i].value);
 				crop_sprites.push({
 					sprite: this.add.sprite(index_col*TILE_SIZE, index_row*TILE_SIZE).setScale(1).setOrigin(0,0),
 					index: index_row+'-'+index_col
 				});
-				const crop_name = CROP_NAMES[LEVELS[dude.level].crops[index_row][index_col]- 1];
+				const crop_name = CROP_NAMES[Math.abs(LEVELS[dude.level].crops[index_row][index_col])- 1];
 				crop_sprites[crop_sprites.length-1].sprite.play("bw_"+crop_name);
 
 				regeneration_list.splice(i,1);
@@ -783,9 +783,19 @@ function attacks(game)
 			else
 				dude.xvel += MAX_SPEED;
 		}
-		const crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i];
+		let crop_index = LEVELS[dude.level].crops[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][min_range_x + i];
 		if(crop_index)
 		{
+			if(crop_index < 0)
+			{
+				crop_index = Math.abs(crop_index);
+				if(dude.ability == CROP_ABILITIES[crop_index-1] || dude.ability2 == CROP_ABILITIES[crop_index-1])
+				{
+					game.sound.play("plant_hit", {volume: 0.4});
+					game.emitter_leaf.explode(30, (min_range_x + i)*TILE_SIZE + dude.width/2, Math.floor((dude.sprite.y-(dude.height/2))));
+					return;
+				}
+			}
 			if(dude.ability == "none" && CROP_NAMES[crop_index - 1] != "rose")
 			{
 				dude.ability = CROP_ABILITIES[crop_index - 1];
@@ -863,14 +873,12 @@ function ability(game)
 		// wall-left
 		if(LEVELS[dude.level].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][Math.floor(dude.sprite.x/TILE_SIZE) - 1])
 		{
-			console.log("left")
 			dude.xvel = 4;
 			dude.yvel = -4;
 		}
 		//wall right
 		else if(LEVELS[dude.level].tiles[Math.floor((dude.sprite.y-(dude.height/2))/TILE_SIZE)][Math.floor(dude.sprite.x/TILE_SIZE) + 1])
 		{
-			console.log("right")
 			dude.xvel = -4;
 			dude.yvel = -4;
 		}
@@ -1010,7 +1018,7 @@ function loadCrops(game)
 					index: i+'-'+j
 				});
 
-				const crop_name = CROP_NAMES[LEVELS[dude.level].crops[i][j]- 1];
+				const crop_name = CROP_NAMES[Math.abs(LEVELS[dude.level].crops[i][j]) - 1];
 				crop_sprites[crop_sprites.length-1].sprite.play(crop_name);
 			}
 		}
