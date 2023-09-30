@@ -1,9 +1,7 @@
 import scene_menu from './scenes/menu.js';
-import gameplay from "./scenes/gameplay.js";
+import gameplay from './scenes/gameplay.js';
 import {WIDTH_CANVAS, HEIGHT_CANVAS} from './globals.js';
 
-
-const COLOR_BACKGROUND = 0x0a0808;
 
 
 document.addEventListener('DOMContentLoaded', function()
@@ -13,12 +11,18 @@ document.addEventListener('DOMContentLoaded', function()
 	const game = new Phaser.Game({
 		pixelArt: true,
 		type: Phaser.AUTO,
-		title: 'LD52',
+		width: 800,   // New width in pixels
+		height: 600,  // New height in pixels
+		title: 'LD54',
 		parent: dom_container,
 		width: WIDTH_CANVAS/2,
 		height: HEIGHT_CANVAS/2,
 		resolution: 5,
-		scene: [scene_menu, gameplay],
+		scene: [gameplay],
+		fps: {
+			target: 60,
+			forceSetTimeOut: true // Force the game to use setTimeout for frame rendering
+		},
 		//0x202838
 		backgroundColor: 0x073275,
 		input: {
