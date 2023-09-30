@@ -23,19 +23,10 @@ document.addEventListener('DOMContentLoaded', function()
 			target: 60,
 			forceSetTimeOut: true // Force the game to use setTimeout for frame rendering
 		},
-		//0x202838
-		backgroundColor: 0x073275,
+		//0x073275
+		backgroundColor: 0x202838,
 		input: {
 			gamepad: true
-		},
-		physics: {
-			default: "arcade",
-			arcade: {
-				gravity: {
-					y: 300
-				},
-				debug: true
-			}
 		},
 	});
 

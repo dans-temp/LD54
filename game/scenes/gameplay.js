@@ -1,5 +1,39 @@
 import {WIDTH_CANVAS, PADDING_CANVAS, HEIGHT_CANVAS, FONT_DEFAULT, FONT_TITLE} from "../globals.js";
 
+const LEVELS = 
+[
+	{
+
+			level: 1,
+			width: 40,
+			height: 20,
+			spawnx: 80,
+			spawny: 50,
+			tiles: 
+			[
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+					[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+					[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+			],
+	}
+]
 
 // PHYSICS
 const RUN_ACCEL = 0.4;
@@ -7,17 +41,13 @@ const RUN_DECEL = 0.5;
 const MAX_SPEED = 8;
 const JUMPSPEED = 16;
 const GRAVITY = 0.90;
-
-
-// TILES
-const TILE_SIZE = 16;
-const EPSILON = 0.00000000001;
+const TILE_SIZE = 64;
+const EPSILON = 0.00001;
 
 const game = {
 	ghosts: [],
 	sprites: [],
 	stored_actions: [],
-	level: 1,
 	frame_counter: 550
 }
 
@@ -30,7 +60,8 @@ const dude = {
     size_height: 256,
 	falling: true,
 	facing_right: true,
-	spawn_y : 800
+	spawn_y : 800,
+	level: 0
 };
 
 
@@ -53,6 +84,17 @@ export default new Phaser.Class({
 	},
 	create: function()
 	{
+		//build level
+		for(let i = 0; i < LEVELS[dude.level].tiles.length; i++)
+		{
+			for(let j = 0; j < LEVELS[dude.level].tiles[i].length; j++)
+			{
+				if(LEVELS[dude.level].tiles[i][j] != 0)
+				{
+					this.add.image(j*TILE_SIZE, i*TILE_SIZE, 'ground').setScale(2).setOrigin(0,0);
+				}
+			}
+		}
 		//animations
 		this.anims.create({
             key: "idle",
@@ -156,7 +198,8 @@ export default new Phaser.Class({
 		dude.sprite.x += dude.xvel;
 		dude.sprite.y += dude.yvel;
 
-
+		
+		//handle character moving out of the defined level
 		// else if(dude.sprite.x > LEVELS[dude.level].width*TILE_SIZE - dude.width/2)
 		// {
 		// 	dude.sprite.x = LEVELS[dude.level].width*TILE_SIZE - dude.width/2 - EPSILON;
@@ -193,7 +236,7 @@ export default new Phaser.Class({
 
 
 
-		// handleCollision(this);
+		handleCollision(this);
 
 
 			
@@ -211,7 +254,7 @@ export default new Phaser.Class({
 		// 	//player hit bottom
 		// }
 
-		// else if(!LEVELS[dude.level].tiles[index_row + 1][index_col_left] && !LEVELS[dude.level].tiles[index_row + 1][index_col_right])
+		// if(!LEVELS[dude.level].tiles[index_row + 1][index_col_left] && !LEVELS[dude.level].tiles[index_row + 1][index_col_right])
 		// {
 		// 	dude.falling = true;
 		// }
@@ -238,101 +281,101 @@ export default new Phaser.Class({
 });
 
 
-// function handleCollision(game)
-// {
-// 	if(dude.sprite.y > ((LEVELS[dude.level].height)*TILE_SIZE))
-// 		return;
+function handleCollision(state)
+{
+	if(dude.sprite.y > ((LEVELS[dude.level].height)*TILE_SIZE))
+		return;
 
-// 	function collideTile(index_row, index_col)
-// 	{
+	function collideTile(index_row, index_col)
+	{
 
-// 		const y_top = index_row*TILE_SIZE;
-// 		const y_bottom = y_top + TILE_SIZE;
-// 		const x_left = index_col*TILE_SIZE;
-// 		const x_right = x_left + TILE_SIZE;
+		const y_top = index_row*TILE_SIZE;
+		const y_bottom = y_top + TILE_SIZE;
+		const x_left = index_col*TILE_SIZE;
+		const x_right = x_left + TILE_SIZE;
 
 
-// 		//down
-// 		if(dude.sprite.y - EPSILON > y_top && dude.y_old - EPSILON <= y_top)
-// 		{
-// 			dude.sprite.y = y_top;
-// 			dude.yvel = 0;
-// 			dude.falling = false;
-// 			game.emitter_dirt.explode(20, dude.sprite.x, dude.sprite.y);
-// 			return;
-// 		}
+		//down
+		if(dude.sprite.y - EPSILON > y_top && dude.y_old - EPSILON <= y_top)
+		{
+			dude.sprite.y = y_top;
+			dude.yvel = 0;
+			dude.falling = false;
+			// state.emitter_dirt.explode(20, dude.sprite.x, dude.sprite.y);
+			return;
+		}
 
-// 		//right
-// 		if(dude.sprite.x + dude.width/2 - EPSILON > x_left && dude.x_old + dude.width/2 - EPSILON <= x_left)
-// 		{
-// 			dude.xvel = 0;
-// 			dude.sprite.x = x_left - dude.width/2;
-// 			return;
-// 		}
+		//right
+		if(dude.sprite.x + dude.width/2 - EPSILON > x_left  && dude.x_old + dude.width/2 - EPSILON  <= x_left)
+		{
+			dude.xvel = 0;
+			dude.sprite.x = x_left - dude.width/2;
+			return;
+		}
 
-// 		//left
-// 		if(dude.sprite.x - dude.width/2 < x_right && dude.x_old - dude.width/2 >= x_right)
-// 		{
-// 			dude.xvel = 0;
-// 			dude.sprite.x = x_right + dude.width/2;
-// 			return;
-// 		}
+		//left
+		if(dude.sprite.x - dude.width/2 < x_right && dude.x_old - dude.width/2 >= x_right)
+		{
+			dude.xvel = 0;
+			dude.sprite.x = x_right + dude.width/2;
+			return;
+		}
 
-// 		//top
-// 		if(dude.sprite.y - dude.height + EPSILON < y_bottom && dude.y_old - dude.height >= y_bottom)
-// 		{
-// 			dude.yvel = 0;
-// 			dude.sprite.y = y_bottom + dude.height;
-// 			return;
-// 		}
-// 	}
+		//top
+		if(dude.sprite.y - dude.height + EPSILON < y_bottom && dude.y_old - dude.height >= y_bottom)
+		{
+			dude.yvel = 0;
+			dude.sprite.y = y_bottom + dude.height;
+			return;
+		}
+	}
 
-// 	let index_row, index_col;
+	let index_row, index_col;
 
-// 	// top left
-// 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
-// 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
+	// top left
+	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
 
-// 	// top right
-// 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
+	// top right
+	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
 
-// 	// bottom left
-// 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
-// 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
+	// bottom left
+	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
 
-// 	// bottom right
-// 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
+	// bottom right
+	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
 
-// 	// top left again
-// 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
-// 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
+	// top left again
+	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
 
-// 	// bottom left again
-// 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
+	// bottom left again
+	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
 
-// 	// top right again
-// 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
-// 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
+	// top right again
+	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
+	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
 
-// 	// bottom right again
-// 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
-// 	if(LEVELS[dude.level].tiles[index_row][index_col])
-// 		collideTile(index_row, index_col);
-// }
+	// bottom right again
+	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+	if(LEVELS[dude.level].tiles[index_row][index_col])
+		collideTile(index_row, index_col);
+}
 
 
 
@@ -438,33 +481,28 @@ function collideGhosts()
 			if(((dude_right >= ghost_left &&
 			   dude_right <= ghost_right) ||
 			   (dude_left >= ghost_left &&
-			   dude_right <= ghost_right)) &&
-				dude.y_old <= ghost_top
-			   )
+			   dude_left <= ghost_right)) &&
+				dude.y_old <= ghost_top)
 				{
-					console.log('landing')
 					standing_on_ghost = true
 					dude.sprite.y = ghost_top;
 					dude.yvel = 0;
 				}
 		}
 
-
-	// else if (dude_bottom >= ghost_top &&
-	// 	dude_top <= ghost_bottom &&
-	// 	dude.y_old <= ghost_top &&
-	// 	((dude_right >= ghost_left &&
-	// 	 dude_right <= ghost_right) ||
-	// 	 (dude_left >= ghost_left &&
-	// 	 dude_left <= ghost_right)))
-	// 	{
-				
-	// 		console.log('landing')
-	// 		standing_on_ghost = true
-	// 		dude.sprite.y = ghost_top;
-	// 		dude.yvel = 0;
-				
-	// 	}
+		//check if a ghost is above
+		if(dude_top >= ghost_bottom && 
+		   dude_bottom < ghost_bottom)
+		{
+			if((dude_right >= ghost_left &&
+				dude_right <= ghost_right) ||
+				(dude_left >= ghost_right &&
+				dude_left <= ghost_right) &&
+				dude.y_old >= ghost_bottom)
+		   {
+				dude.sprite.y = ghost_bottom + dude.height
+		   }
+		}
 	}
 
 	if(standing_on_ghost)
