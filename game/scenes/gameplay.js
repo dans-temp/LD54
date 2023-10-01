@@ -8,8 +8,8 @@ const LEVELS =
 			buttons: 2,
 			width: 40,
 			height: 20,
-			spawnx: 50,
-			spawny: 50,
+			spawnx: 300,
+			spawny: 800,
 			button_sprites: [],
 			portal_sprite: [],
 			tiles: 
@@ -59,11 +59,11 @@ const LEVELS =
 ]
 
 // PHYSICS
-const RUN_ACCEL = 0.4;
-const RUN_DECEL = 0.5;
-const MAX_SPEED = 8;
-const JUMPSPEED = 16;
-const GRAVITY = 0.90;
+const RUN_ACCEL = 0.8;
+const RUN_DECEL = 1.2;
+const MAX_SPEED = 12;
+const JUMPSPEED = 28;
+const GRAVITY = 1.2;
 const TILE_SIZE = 64;
 const EPSILON = 0.00000000001;
 
@@ -71,7 +71,9 @@ const game = {
 	ghosts: [],
 	sprites: [],
 	stored_actions: [],
-	frame_counter: 500
+	frame_counter: 500,
+	max_frame_counter: 500,
+	tile_images: []
 }
 
 const dude = {
@@ -115,64 +117,25 @@ export default new Phaser.Class({
 			{frameWidth: 42, frameHeight: 64}
 		);
 
+		this.load.spritesheet('portal-on',
+			'assets/sprites/portal-on.png',
+			{frameWidth: 42, frameHeight: 64}
+		);
+
 		this.load.image("platform-mid", "assets/sprites/platform-mid.png");
 		this.load.image("platform-left", "assets/sprites/platform-left.png");
 		this.load.image("platform-right", "assets/sprites/platform-right.png");
 		this.load.image("button-up", "assets/sprites/button-up.png");
 		this.load.image("button-down", "assets/sprites/button-down.png");
 		this.load.image("portal-off", "assets/sprites/portal-off.png");
-		this.load.image("portal-on", "assets/sprites/portal-on.png");
+		
 	},
 		
 	create: function()
 	{
 		//build level
-		for(let i = 0; i < LEVELS[dude.level].tiles.length; i++)
-		{
-			for(let j = 0; j < LEVELS[dude.level].tiles[i].length; j++)
-			{
-				const tile_value = LEVELS[dude.level].tiles[i][j];
-				if(tile_value != 0)
-				{
-					if(tile_value === 1)
-						this.add.image(j*TILE_SIZE, i*TILE_SIZE, 'platform-mid').setScale(4).setOrigin(0,0);
-					else if (tile_value === 2)
-					{
-						this.add.image(j*TILE_SIZE, i*TILE_SIZE, 'platform-left').setScale(4).setOrigin(0,0);
-					}
-						
-					else if (tile_value === 3)
-						this.add.image(j*TILE_SIZE, i*TILE_SIZE, 'platform-right').setScale(4).setOrigin(0,0);
-				}
-			}
-		}
-		//build buttons and portals
-		for(let i = 0; i < LEVELS[dude.level].things.length; i++)
-		{
-			for(let j = 0; j < LEVELS[dude.level].things[i].length; j++)
-			{
-				const tile_value = LEVELS[dude.level].things[i][j];
-				if(tile_value != 0)
-				{
-					if(tile_value === 1)
-					{
-						LEVELS[dude.level].button_sprites.push({
-							image: this.add.image(j*TILE_SIZE, i*TILE_SIZE, 'button-up').setScale(4).setOrigin(0,0.9).setDepth(8),
-							id: [i, j]
-						})	
-					}
-					if(tile_value === 2)
-					{
-						LEVELS[dude.level].portal_sprite.push({
-							image: this.add.image(j*TILE_SIZE, i*TILE_SIZE, 'portal-off').setScale(4).setOrigin(0,1).setDepth(8),
-							id: [i, j]
-						})	
-						
-					}
-						
-				}
-			}
-		}
+		generateLevel(this);
+
 		//animations
 		this.anims.create({
             key: "idle",
@@ -198,11 +161,17 @@ export default new Phaser.Class({
             frameRate: 15,
             repeat: -1
         });
+		this.anims.create({
+            key: "portal-on",
+            frames: this.anims.generateFrameNumbers("portal-on", {start: 0, end: 1}),
+            frameRate: 10,
+            repeat: -1
+        });
 
 		this.input.gamepad.start();
 		this.cursors = this.input.keyboard.addKeys("UP,LEFT,DOWN,RIGHT,N,W,A,S,D,M,ENTER,SPACE");
 
-		dude.sprite = this.add.sprite(300, dude.spawn_y, 'idle').setDisplaySize(dude.size_width, dude.size_height).setOrigin(0.5, 1).setDepth(4);
+		dude.sprite = this.add.sprite(LEVELS[dude.level].spawnx, LEVELS[dude.level].spawny, 'idle').setDisplaySize(dude.size_width, dude.size_height).setOrigin(0.5, 1).setDepth(4);
 		this.cameras.main.startFollow(dude.sprite);
 		this.cameras.main.setBounds(0, 0, WIDTH_CANVAS, HEIGHT_CANVAS);
 		this.cameras.main.setZoom(1);
@@ -221,22 +190,16 @@ export default new Phaser.Class({
 		const restart = this.cursors.ENTER.isDown;
 
 
-	// if(game.frame_counter % 10 === 0)
-	{
 		game.stored_actions.push(
-			{
-				x: dude.sprite.x,
-				y: dude.sprite.y,
-				xvel: dude.xvel,
-				yvel: dude.yvel,
-				animation: dude.sprite.anims.currentAnim.key
-			}
-		);
-	}
-
-
-
-
+		{
+			x: dude.sprite.x,
+			y: dude.sprite.y,
+			xvel: dude.xvel,
+			yvel: dude.yvel,
+			animation_key: dude.sprite.anims.currentFrame.textureKey,
+			animation_frame: dude.sprite.anims.currentFrame.index
+		});
+		
 
 		if( (!left && !right) || (left && right))
 		{
@@ -289,8 +252,8 @@ export default new Phaser.Class({
 		dude.sprite.y += dude.yvel;
 
 		
-		//handle character moving out of the defined level
-		// else if(dude.sprite.x > LEVELS[dude.level].width*TILE_SIZE - dude.width/2)
+		// handle character moving out of the defined level
+		// if(dude.sprite.x > LEVELS[dude.level].width*TILE_SIZE - dude.width/2)
 		// {
 		// 	dude.sprite.x = LEVELS[dude.level].width*TILE_SIZE - dude.width/2 - EPSILON;
 		// 	dude.xvel = 0;
@@ -315,12 +278,12 @@ export default new Phaser.Class({
 			moveGhosts(this);
 		}
 
-		if(dude.sprite.y > HEIGHT_CANVAS)
-		{
-			dude.falling = false;
-			dude.sprite.y = HEIGHT_CANVAS;
-			dude.yvel = 0;
-		}
+		// if(dude.sprite.y > HEIGHT_CANVAS)
+		// {
+		// 	dude.falling = false;
+		// 	dude.sprite.y = HEIGHT_CANVAS;
+		// 	dude.yvel = 0;
+		// }
 
 
 
@@ -392,7 +355,14 @@ export default new Phaser.Class({
 			dude.pressing_button_at = [];
 		}
 
-		// console.log(dude.pressing_button_at)
+		//check if the tile bellow the player is the portal
+		if(LEVELS[dude.level].things[index_row + 1][index_col_left] === 2 || LEVELS[dude.level].things[index_row + 1][index_col_right] === 2)
+		{
+			if(LEVELS[dude.level].portal_sprite[0].image.texture.key === 'portal-on')
+			{
+				levelComplete(this);
+			}
+		}
 
 
 		collideGhosts();
@@ -408,7 +378,6 @@ export default new Phaser.Class({
 			else if (dude.sprite.anims.currentAnim.key != "jump" && dude.sprite.anims.currentAnim.key != "falling")
 				dude.sprite.play("jump");
 		}
-		console.log(dude.buttons_pressed);
 		timer();
 	}
 });
@@ -531,7 +500,7 @@ function moveGhosts(state)
 		}
 		index ++;
 
-
+		game.sprites[game.sprites.length -1].sprite.setTexture(ghost.actions[0].animation_key, ghost.actions[0].animation_frame);
 
 		// add flipx
 
@@ -554,15 +523,15 @@ function timer()
 		game.ghosts.push({
 			actions: game.stored_actions.slice()
 		});
-		game.frame_counter = 500; // reset
+		game.frame_counter = game.max_frame_counter; // reset
 		for(const sprite of game.sprites)
 		{
 			sprite.sprite.destroy();
 		}
 		game.sprites = [];
 		game.stored_actions = [];
-		dude.spawn_y -= 200;
-		dude.sprite.x = 500;
+		dude.spawn_y = LEVELS[dude.level].spawny - 200;
+		dude.sprite.x = LEVELS[dude.level].spawnx;
 		dude.sprite.y = dude.spawn_y;
 		dude.buttons_pressed = 0;
 		//unpress ghost buttons
@@ -638,6 +607,7 @@ function collideGhosts()
 
 
 		//check if a ghost is above
+		//this is looks wrong but give the game less issues
 		if(dude_top >= ghost_bottom && 
 		   dude_bottom < ghost_bottom)
 		{
@@ -681,11 +651,89 @@ function collideGhosts()
 			
 		}
 	}
-
 	if(standing_on_ghost)
 		dude.falling = false;
 }
 
 
+function generateLevel(state)
+{
+	//build tiles
+	for(let i = 0; i < LEVELS[dude.level].tiles.length; i++)
+	{
+		for(let j = 0; j < LEVELS[dude.level].tiles[i].length; j++)
+		{
+			const tile_value = LEVELS[dude.level].tiles[i][j];
+			if(tile_value != 0)
+			{
+				if(tile_value === 1)
+					game.tile_images.push(state.add.image(j*TILE_SIZE, i*TILE_SIZE, 'platform-mid').setScale(4).setOrigin(0,0));
+				else if (tile_value === 2)
+				{
+					game.tile_images.push(state.add.image(j*TILE_SIZE, i*TILE_SIZE, 'platform-left').setScale(4).setOrigin(0,0));
+				}
+				else if (tile_value === 3)
+					game.tile_images.push(state.add.image(j*TILE_SIZE, i*TILE_SIZE, 'platform-right').setScale(4).setOrigin(0,0));
+			}
+		}
+	}
+	//build buttons and portals
+	for(let i = 0; i < LEVELS[dude.level].things.length; i++)
+	{
+		for(let j = 0; j < LEVELS[dude.level].things[i].length; j++)
+		{
+			const tile_value = LEVELS[dude.level].things[i][j];
+			if(tile_value != 0)
+			{
+				if(tile_value === 1)
+				{
+					LEVELS[dude.level].button_sprites.push({
+						image: state.add.image(j*TILE_SIZE, i*TILE_SIZE, 'button-up').setScale(4).setOrigin(0,0.9).setDepth(8),
+						id: [i, j]
+					})	
+				}
+				if(tile_value === 2)
+				{
+					LEVELS[dude.level].portal_sprite.push({
+						image: state.add.image(j*TILE_SIZE, i*TILE_SIZE, 'portal-off').setScale(4).setOrigin(0,1).setDepth(-1),
+						id: [i, j]
+					})	
+					
+				}
+					
+			}
+		}
+	}
+}
 
 
+function levelComplete(state)
+{
+	LEVELS[dude.level].portal_sprite[0].image.destroy();
+	LEVELS[dude.level].portal_sprite = []
+	for (const button of LEVELS[dude.level].button_sprites)
+	{
+		button.image.destroy();
+	}
+	LEVELS[dude.level].button_sprites = [];
+
+	// // dude.level ++;
+	game.frame_counter = game.max_frame_counter; // reset
+	for(const sprite of game.sprites)
+	{
+		sprite.sprite.destroy();
+	}
+	for(const tile of game.tile_images)
+	{
+		tile.destroy();
+	}
+	game.sprites = [];
+	game.stored_actions = [];
+	game.ghosts = []
+
+	dude.sprite.x = LEVELS[dude.level].spawnx;
+	dude.spawn_y = LEVELS[dude.level].spawny;
+	dude.sprite.y = dude.spawn_y;
+	dude.buttons_pressed = 0;
+	generateLevel(state);
+}
