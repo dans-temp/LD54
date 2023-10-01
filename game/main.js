@@ -11,12 +11,10 @@ document.addEventListener('DOMContentLoaded', function()
 	const game = new Phaser.Game({
 		pixelArt: true,
 		type: Phaser.AUTO,
-		width: 800,   // New width in pixels
-		height: 600,  // New height in pixels
 		title: 'LD54',
 		parent: dom_container,
-		width: WIDTH_CANVAS/2,
-		height: HEIGHT_CANVAS/2,
+		width: WIDTH_CANVAS,
+		height: HEIGHT_CANVAS,
 		resolution: 5,
 		scene: [gameplay],
 		fps: {
