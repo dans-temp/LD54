@@ -24,7 +24,7 @@ const LEVELS =
 					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 					[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 					[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 					[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -42,7 +42,7 @@ const MAX_SPEED = 8;
 const JUMPSPEED = 16;
 const GRAVITY = 0.90;
 const TILE_SIZE = 64;
-const EPSILON = 0.00001;
+const EPSILON = 0.00000000001;
 
 const game = {
 	ghosts: [],
@@ -241,10 +241,10 @@ export default new Phaser.Class({
 
 			
 		// player coordinates
-		// const index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
-		// const index_col = Math.floor(dude.sprite.x/TILE_SIZE);
-		// const index_col_left = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-		// const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+		const index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+		const index_col = Math.floor(dude.sprite.x/TILE_SIZE);
+		const index_col_left = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+		const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
 
 		// if(index_row + 1 >= LEVELS[dude.level].height)
 		// {	
@@ -254,10 +254,11 @@ export default new Phaser.Class({
 		// 	//player hit bottom
 		// }
 
-		// if(!LEVELS[dude.level].tiles[index_row + 1][index_col_left] && !LEVELS[dude.level].tiles[index_row + 1][index_col_right])
-		// {
-		// 	dude.falling = true;
-		// }
+		if(!LEVELS[dude.level].tiles[index_row + 1][index_col_left] && !LEVELS[dude.level].tiles[index_row + 1][index_col_right])
+		{
+
+			dude.falling = true;
+		}
 
 		//animate between falling and jumping
 		// if(dude.falling)
@@ -288,7 +289,6 @@ function handleCollision(state)
 
 	function collideTile(index_row, index_col)
 	{
-
 		const y_top = index_row*TILE_SIZE;
 		const y_bottom = y_top + TILE_SIZE;
 		const x_left = index_col*TILE_SIZE;
@@ -297,7 +297,7 @@ function handleCollision(state)
 
 		//down
 		if(dude.sprite.y - EPSILON > y_top && dude.y_old - EPSILON <= y_top)
-		{
+		{		
 			dude.sprite.y = y_top;
 			dude.yvel = 0;
 			dude.falling = false;
@@ -307,7 +307,7 @@ function handleCollision(state)
 
 		//right
 		if(dude.sprite.x + dude.width/2 - EPSILON > x_left  && dude.x_old + dude.width/2 - EPSILON  <= x_left)
-		{
+		{	
 			dude.xvel = 0;
 			dude.sprite.x = x_left - dude.width/2;
 			return;
@@ -353,7 +353,7 @@ function handleCollision(state)
 	index_col = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
 	if(LEVELS[dude.level].tiles[index_row][index_col])
 		collideTile(index_row, index_col);
-
+		
 	// top left again
 	index_row = Math.floor((dude.sprite.y - dude.height)/TILE_SIZE);
 	index_col = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
@@ -374,7 +374,7 @@ function handleCollision(state)
 	// bottom right again
 	index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
 	if(LEVELS[dude.level].tiles[index_row][index_col])
-		collideTile(index_row, index_col);
+		collideTile(index_row, index_col);	
 }
 
 
@@ -507,8 +507,6 @@ function collideGhosts()
 
 	if(standing_on_ghost)
 		dude.falling = false;
-	else
-		dude.falling = true
 }
 
 
