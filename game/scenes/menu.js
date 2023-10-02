@@ -1,7 +1,6 @@
 import {WIDTH_CANVAS, PADDING_CANVAS, HEIGHT_CANVAS, FONT_DEFAULT, FONT_TITLE} from "../globals.js";
 
-const guy = {}
-
+const guy = {};
 export default new Phaser.Class({
 	Extends: Phaser.Scene,
 	initialize: function()
@@ -10,8 +9,7 @@ export default new Phaser.Class({
 	},
 	preload: function()
 	{
-		// TODO
-		// this.load.audio("title_theme", "assets/music/title_theme.mp3");
+		this.load.audio("theme", "assets/music/theme.wav");
 		this.load.spritesheet("idle_title",
 		"assets/sprites/idle.png",
 		{frameWidth: 42, frameHeight: 64}
@@ -30,10 +28,10 @@ export default new Phaser.Class({
 
 		guy.sprite = this.add.sprite(WIDTH_CANVAS/2, HEIGHT_CANVAS/2, "idle_title").setDisplaySize(420, 640).setDepth(2);
 		guy.sprite.play("idle_title", true);
-		// TODO
-		// this.music = this.sound.add("title_theme", {volume: 0.7});
-		// this.music.loop = true;
-		// this.music.play()
+
+		this.music = this.sound.add("theme", {volume: 0.5});
+		this.music.loop = true;
+		this.music.play()
 		
 
 
