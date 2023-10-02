@@ -495,11 +495,11 @@ const LEVELS =
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-			[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-			[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 7, 4, 4, 4, 4, 4, 4, 6, 0, 0, 0, 0, 0, 5, 4, 6, 0, 0, 0, 0, 0, 0, 0, 5, 4, 4, 4, 6],
+			[0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 2, 1, 3, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 3],
+			[0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 2, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 2, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 2, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -552,7 +552,10 @@ const game = {
 	tile_images: [],
 	player_shadows: [],
 	warps_remaining: 0,
-	signs: []
+	signs: [],
+	level_text: [],
+	level_rect: [],
+	hol_up_a_min: false
 }
 
 const dude = {
@@ -665,268 +668,270 @@ export default new Phaser.Class({
 
 		this.ui = {
             top_hud_bg: this.add.graphics().fillStyle(0x000000, 1).fillRect(0, 0, WIDTH_CANVAS, 60).setPosition(0, 0).setScrollFactor(0).setDepth(4),
-			text_level: this.add.text(100,  20, "LEVEL: " + (dude.level+1), {fontSize: "28px", fill: "white"}).setOrigin(0.5, 0).setScrollFactor(0).setDepth(4),
-            text_timer: this.add.text(WIDTH_CANVAS/2, 20, + Math.ceil(game.frame_counter/50) + " SECONDS BEFORE NEXT TIME LOOP", {fontSize: "28px", fill: "white"}).setOrigin(0.5, 0).setScrollFactor(0).setDepth(4),
-			warp_counter: this.add.text(WIDTH_CANVAS - 300,  20, game.warps_remaining + " TIME TRAVELS REMAINING ", {fontSize: "28px", fill: "white"}).setOrigin(0.5, 0).setScrollFactor(0).setDepth(4),
+			text_level: this.add.text(100,  20, "LEVEL: " + (dude.level+1), {fontSize: "28px", fill: "white", fontFamily: FONT_DEFAULT}).setOrigin(0.5, 0).setScrollFactor(0).setDepth(4),
+            text_timer: this.add.text(WIDTH_CANVAS/2, 20, + Math.ceil(game.frame_counter/50) + " SECONDS BEFORE TIME LOOP", {fontSize: "28px", fill: "white", fontFamily: FONT_DEFAULT}).setOrigin(0.5, 0).setScrollFactor(0).setDepth(4),
+			warp_counter: this.add.text(WIDTH_CANVAS - 300,  20, game.warps_remaining + " TIME LOOPS REMAINING ", {fontSize: "28px", fill: "white", fontFamily: FONT_DEFAULT}).setOrigin(0.5, 0).setScrollFactor(0).setDepth(4),
         };
 
 	},
 	update()
 	{
-
-		const gamepad = this.input.gamepad.gamepads[0];
-
-		const left = this.cursors.A.isDown || this.cursors.LEFT.isDown  || (gamepad && (gamepad.left || gamepad.leftStick.x < -0.1));
-		const right = this.cursors.D.isDown || this.cursors.RIGHT.isDown || (gamepad && (gamepad.right || gamepad.leftStick.x > 0.1));
-		const jump = this.cursors.W.isDown || this.cursors.UP.isDown || this.cursors.SPACE.isDown ||  (gamepad && gamepad.A);
-		const down = this.cursors.S.isDown
-		const end_time = this.cursors.E.isDown;
-		const undo = this.cursors.Z.isDown || this.cursors.ESC.isDown;
-
-		this.ui.text_timer.setText("TIME: "+ Math.ceil(game.frame_counter/50));
-
-		
-		game.stored_actions.push(
+		if(!game.hol_up_a_min)
 		{
-			x: dude.sprite.x,
-			y: dude.sprite.y,
-			xvel: dude.xvel,
-			yvel: dude.yvel,
-			animation_key: dude.sprite.anims.currentFrame.textureKey,
-			animation_frame: dude.sprite.anims.currentFrame.index,
-			flipX: dude.sprite.flipX
-		});
-		
+			const gamepad = this.input.gamepad.gamepads[0];
 
-		if( (!left && !right) || (left && right))
-		{
-			if (dude.sprite.anims.currentAnim.key !== "idle" && !dude.falling)
-				dude.sprite.play("idle");
-			if(dude.xvel > 0)
-				dude.xvel = Math.max(0, dude.xvel - RUN_DECEL);
-			else
-				dude.xvel = Math.min(0, dude.xvel + RUN_DECEL);
-		}
-
-		if (left && !right)
-		{
-			if(!dude.falling)
+			const left = this.cursors.A.isDown || this.cursors.LEFT.isDown  || (gamepad && (gamepad.left || gamepad.leftStick.x < -0.1));
+			const right = this.cursors.D.isDown || this.cursors.RIGHT.isDown || (gamepad && (gamepad.right || gamepad.leftStick.x > 0.1));
+			const jump = this.cursors.W.isDown || this.cursors.UP.isDown || this.cursors.SPACE.isDown ||  (gamepad && gamepad.A);
+			const down = this.cursors.S.isDown
+			const end_time = this.cursors.E.isDown;
+			const undo = this.cursors.Z.isDown || this.cursors.ESC.isDown;
+	
+			this.ui.text_timer.setText("TIME: "+ Math.ceil(game.frame_counter/50));
+	
+			
+			game.stored_actions.push(
 			{
-				dude.sprite.anims.play("run", true);
-			}
-			if(Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL) < dude.xvel)
-				dude.xvel = Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL);
-			dude.sprite.flipX = true;
-		}
-		else if(right && !left)
-		{
-			if(!dude.falling)
+				x: dude.sprite.x,
+				y: dude.sprite.y,
+				xvel: dude.xvel,
+				yvel: dude.yvel,
+				animation_key: dude.sprite.anims.currentFrame.textureKey,
+				animation_frame: dude.sprite.anims.currentFrame.index,
+				flipX: dude.sprite.flipX
+			});
+			
+	
+			if( (!left && !right) || (left && right))
 			{
-				dude.sprite.anims.play("run", true);
+				if (dude.sprite.anims.currentAnim.key !== "idle" && !dude.falling)
+					dude.sprite.play("idle");
+				if(dude.xvel > 0)
+					dude.xvel = Math.max(0, dude.xvel - RUN_DECEL);
+				else
+					dude.xvel = Math.min(0, dude.xvel + RUN_DECEL);
 			}
-			if(Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL) > dude.xvel)
-				dude.xvel = Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL);
-			dude.sprite.flipX = false;
-		}
-
-		if (end_time && !end_time_called)
-		{
-				end_time_called = true;
-
-				while(game.stored_actions.length < game.max_frame_counter)
+	
+			if (left && !right)
+			{
+				if(!dude.falling)
 				{
-					game.stored_actions.push(
+					dude.sprite.anims.play("run", true);
+				}
+				if(Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL) < dude.xvel)
+					dude.xvel = Math.max(-MAX_SPEED, dude.xvel - RUN_ACCEL);
+				dude.sprite.flipX = true;
+			}
+			else if(right && !left)
+			{
+				if(!dude.falling)
+				{
+					dude.sprite.anims.play("run", true);
+				}
+				if(Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL) > dude.xvel)
+					dude.xvel = Math.min(MAX_SPEED, dude.xvel + RUN_ACCEL);
+				dude.sprite.flipX = false;
+			}
+	
+			if (end_time && !end_time_called)
+			{
+					end_time_called = true;
+	
+					while(game.stored_actions.length < game.max_frame_counter)
+					{
+						game.stored_actions.push(
+							{
+								x: dude.sprite.x,
+								y: dude.sprite.y,
+								xvel: dude.xvel,
+								yvel: dude.yvel,
+								animation_key: dude.sprite.anims.currentFrame.textureKey,
+								animation_frame: dude.sprite.anims.currentFrame.index,
+								flipX: dude.sprite.flipX
+							});
+	
+						for(const ghost of game.ghosts)
 						{
-							x: dude.sprite.x,
-							y: dude.sprite.y,
-							xvel: dude.xvel,
-							yvel: dude.yvel,
-							animation_key: dude.sprite.anims.currentFrame.textureKey,
-							animation_frame: dude.sprite.anims.currentFrame.index,
-							flipX: dude.sprite.flipX
-						});
-
+							ghost.actions.push(ghost.actions.shift());
+						}
+	
+					};
 					for(const ghost of game.ghosts)
 					{
 						ghost.actions.push(ghost.actions.shift());
 					}
-
-				};
-				for(const ghost of game.ghosts)
-				{
-					ghost.actions.push(ghost.actions.shift());
-				}
-				
-				endTime(this);
-				setTimeout(() => {
-					end_time_called = false;
-				}, 2000);
-		}
-
-		if (undo && !undo_called)
-		{
-				undo_called = true;
-
-				levelComplete(this, true)
-
-				setTimeout(() => {
-					undo_called = false;
-				}, 2000);
-		}
-
-		dude.x_old = dude.sprite.x;
-		dude.y_old = dude.sprite.y;
-
-		if(dude.falling)
-			dude.yvel += GRAVITY;
-
-
-		if(jump && !dude.falling)
-		{
-			dude.yvel = -JUMPSPEED;
-			dude.falling = true;
-		}
-
-		dude.sprite.x += dude.xvel;
-		dude.sprite.y += dude.yvel;
-
-		
-		// handle character moving out of the defined level
-		// if(dude.sprite.x > LEVELS[dude.level].width*TILE_SIZE - dude.width/2)
-		// {
-		// 	dude.sprite.x = LEVELS[dude.level].width*TILE_SIZE - dude.width/2 - EPSILON;
-		// 	dude.xvel = 0;
-		// }
-
-
-		//land at the bottom untill we get tiles for collision
+					
+					endTime(this);
+					setTimeout(() => {
+						end_time_called = false;
+					}, 2000);
+			}
 	
-		if(dude.sprite.x < dude.width/2)
-		{
-			dude.sprite.x = dude.width/2;
-			dude.xvel = 0;
-		}
-		if(dude.sprite.x > WIDTH_CANVAS - dude.width/2)
-		{
-			dude.sprite.x = WIDTH_CANVAS - dude.width/2;
-			dude.xvel = 0;
-		}
-
-		if(dude.sprite.y <= dude.height)
-		{
-			dude.sprite.y = dude.height;
-			dude.yvel = 0;
-		}
-
-
-		moveGhosts(this);
-
-
-		// if(dude.sprite.y > HEIGHT_CANVAS)
-		// {
-		// 	dude.falling = false;
-		// 	dude.sprite.y = HEIGHT_CANVAS;
-		// 	dude.yvel = 0;
-		// }
-
-
-
-		handleCollision(this);
-
-		// if(game.frame_counter % 50 === 0)
-		// {
-		// 	game.player_shadows.push({sprite: this.add.sprite(dude.sprite.x, dude.sprite.y, 'idle').setOrigin(0.5, 1).setDisplaySize(dude.size_width, dude.size_height).setDepth(-2).setAlpha(0.3)})
-		// }
-
+			if (undo && !undo_called)
+			{
+					undo_called = true;
+	
+					levelComplete(this, true)
+	
+					setTimeout(() => {
+						undo_called = false;
+					}, 2000);
+			}
+	
+			dude.x_old = dude.sprite.x;
+			dude.y_old = dude.sprite.y;
+	
+			if(dude.falling)
+				dude.yvel += GRAVITY;
+	
+	
+			if(jump && !dude.falling)
+			{
+				dude.yvel = -JUMPSPEED;
+				dude.falling = true;
+			}
+	
+			dude.sprite.x += dude.xvel;
+			dude.sprite.y += dude.yvel;
+	
 			
-		// player coordinates
-		const index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
-		const index_col = Math.floor(dude.sprite.x/TILE_SIZE);
-		const index_col_left = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
-		const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
-
-		if(index_row + 1 >= LEVELS[dude.level].height)
-		{	
-			//game over
-			//player hit bottom
-			console.log('game over')
-		}
-
-		//check if the player does not have a tile bellow them
-		else if(!LEVELS[dude.level]?.tiles[index_row + 1][index_col_left] && !LEVELS[dude.level]?.tiles[index_row + 1][index_col_right])
-		{
-			dude.falling = true;
-		}
-		//if they do have a tile bellow them check if it is a button
-		if(LEVELS[dude.level].things[index_row + 1][index_col_left] === 1 || LEVELS[dude.level].things[index_row + 1][index_col_right] === 1)
-		{
-			//store the index of the button being pressed
-			if(LEVELS[dude.level].things[index_row + 1][index_col_left] === 1)
-				dude.pressing_button_at = [index_row + 1,index_col_left];
-			else
-				dude.pressing_button_at = [index_row + 1,index_col_right];
-
-			// console.log(dude.pressing_button_at[0] === LEVELS[dude.level].button_sprites[0].id[0] && dude.pressing_button_at[1] === LEVELS[dude.level].button_sprites[0].id[1])
-			for(const level_button of LEVELS[dude.level].button_sprites)
+			// handle character moving out of the defined level
+			// if(dude.sprite.x > LEVELS[dude.level].width*TILE_SIZE - dude.width/2)
+			// {
+			// 	dude.sprite.x = LEVELS[dude.level].width*TILE_SIZE - dude.width/2 - EPSILON;
+			// 	dude.xvel = 0;
+			// }
+	
+	
+			//land at the bottom untill we get tiles for collision
+		
+			if(dude.sprite.x < dude.width/2)
 			{
-				if(dude.pressing_button_at[0] === level_button.id[0] && dude.pressing_button_at[1] === level_button.id[1])
+				dude.sprite.x = dude.width/2;
+				dude.xvel = 0;
+			}
+			if(dude.sprite.x > WIDTH_CANVAS - dude.width/2)
+			{
+				dude.sprite.x = WIDTH_CANVAS - dude.width/2;
+				dude.xvel = 0;
+			}
+	
+			if(dude.sprite.y <= dude.height)
+			{
+				dude.sprite.y = dude.height;
+				dude.yvel = 0;
+			}
+	
+	
+			moveGhosts(this);
+	
+	
+			// if(dude.sprite.y > HEIGHT_CANVAS)
+			// {
+			// 	dude.falling = false;
+			// 	dude.sprite.y = HEIGHT_CANVAS;
+			// 	dude.yvel = 0;
+			// }
+	
+	
+	
+			handleCollision(this);
+	
+			// if(game.frame_counter % 50 === 0)
+			// {
+			// 	game.player_shadows.push({sprite: this.add.sprite(dude.sprite.x, dude.sprite.y, 'idle').setOrigin(0.5, 1).setDisplaySize(dude.size_width, dude.size_height).setDepth(-2).setAlpha(0.3)})
+			// }
+	
+				
+			// player coordinates
+			const index_row = Math.floor((dude.sprite.y - EPSILON)/TILE_SIZE);
+			const index_col = Math.floor(dude.sprite.x/TILE_SIZE);
+			const index_col_left = Math.floor((dude.sprite.x - dude.width/2)/TILE_SIZE);
+			const index_col_right = Math.floor((dude.sprite.x + dude.width/2 - EPSILON)/TILE_SIZE);
+	
+			if(index_row + 1 >= LEVELS[dude.level].height)
+			{	
+				//game over
+				//player hit bottom
+				console.log('game over')
+			}
+	
+			//check if the player does not have a tile bellow them
+			else if(!LEVELS[dude.level]?.tiles[index_row + 1][index_col_left] && !LEVELS[dude.level]?.tiles[index_row + 1][index_col_right])
+			{
+				dude.falling = true;
+			}
+			//if they do have a tile bellow them check if it is a button
+			if(LEVELS[dude.level].things[index_row + 1][index_col_left] === 1 || LEVELS[dude.level].things[index_row + 1][index_col_right] === 1)
+			{
+				//store the index of the button being pressed
+				if(LEVELS[dude.level].things[index_row + 1][index_col_left] === 1)
+					dude.pressing_button_at = [index_row + 1,index_col_left];
+				else
+					dude.pressing_button_at = [index_row + 1,index_col_right];
+	
+				// console.log(dude.pressing_button_at[0] === LEVELS[dude.level].button_sprites[0].id[0] && dude.pressing_button_at[1] === LEVELS[dude.level].button_sprites[0].id[1])
+				for(const level_button of LEVELS[dude.level].button_sprites)
 				{
-					if(level_button.image.texture.key !== 'button-down')
+					if(dude.pressing_button_at[0] === level_button.id[0] && dude.pressing_button_at[1] === level_button.id[1])
 					{
-						level_button.image.setTexture('button-down');
-						dude.buttons_pressed ++;
-						if(dude.buttons_pressed === LEVELS[dude.level].button_sprites.length)
+						if(level_button.image.texture.key !== 'button-down')
 						{
-							LEVELS[dude.level].portal_sprite[0].image.setTexture('portal-on');
+							level_button.image.setTexture('button-down');
+							dude.buttons_pressed ++;
+							if(dude.buttons_pressed === LEVELS[dude.level].button_sprites.length)
+							{
+								LEVELS[dude.level].portal_sprite[0].image.setTexture('portal-on');
+							}
 						}
+							
 					}
-						
 				}
 			}
-		}
-		//if player leaves the button unpress it
-		else if (dude.pressing_button_at != [])
-		{
-
-			for(const level_button of LEVELS[dude.level].button_sprites)
+			//if player leaves the button unpress it
+			else if (dude.pressing_button_at != [])
 			{
-				if(dude.pressing_button_at[0] === level_button.id[0] && dude.pressing_button_at[1] === level_button.id[1])
+	
+				for(const level_button of LEVELS[dude.level].button_sprites)
 				{
-					if(level_button.image.texture.key !== 'button-up')
+					if(dude.pressing_button_at[0] === level_button.id[0] && dude.pressing_button_at[1] === level_button.id[1])
 					{
-						level_button.image.setTexture('button-up');
-						dude.buttons_pressed --;
-						LEVELS[dude.level].portal_sprite[0].image.setTexture('portal-off');
-					}	
+						if(level_button.image.texture.key !== 'button-up')
+						{
+							level_button.image.setTexture('button-up');
+							dude.buttons_pressed --;
+							LEVELS[dude.level].portal_sprite[0].image.setTexture('portal-off');
+						}	
+					}
+				}
+				dude.pressing_button_at = [];
+			}
+	
+			//check if the tile bellow the player is the portal
+			if(LEVELS[dude.level].things[index_row + 1][index_col_left] === 2 || LEVELS[dude.level].things[index_row + 1][index_col_right] === 2)
+			{
+				if(LEVELS[dude.level].portal_sprite[0].image.texture.key === 'portal-on')
+				{
+					levelComplete(this);
 				}
 			}
-			dude.pressing_button_at = [];
-		}
-
-		//check if the tile bellow the player is the portal
-		if(LEVELS[dude.level].things[index_row + 1][index_col_left] === 2 || LEVELS[dude.level].things[index_row + 1][index_col_right] === 2)
-		{
-			if(LEVELS[dude.level].portal_sprite[0].image.texture.key === 'portal-on')
+	
+	
+			collideGhosts();
+			handleCollision(this);
+	
+			// animate between falling and jumping
+			if(dude.falling)
 			{
-				levelComplete(this);
+				if(dude.yvel > 0 && dude.sprite.anims.currentAnim.key != "falling")
+				{
+					dude.sprite.play("falling");
+				}
+				else if (dude.sprite.anims.currentAnim.key != "jump" && dude.sprite.anims.currentAnim.key != "falling")
+					dude.sprite.play("jump");
 			}
+			timer(this);
 		}
-
-
-		collideGhosts();
-		handleCollision(this);
-
-		// animate between falling and jumping
-		if(dude.falling)
-		{
-			if(dude.yvel > 0 && dude.sprite.anims.currentAnim.key != "falling")
-			{
-				dude.sprite.play("falling");
-			}
-			else if (dude.sprite.anims.currentAnim.key != "jump" && dude.sprite.anims.currentAnim.key != "falling")
-				dude.sprite.play("jump");
-		}
-		timer(this);
 	}
 });
 
@@ -1177,6 +1182,33 @@ function collideGhosts()
 function generateLevel(state)
 {
 	game.warps_remaining = LEVELS[dude.level].warps;
+	if(game.level_rect.length > 0)
+	{
+		for(const rect of game.level_rect)
+		{
+			rect.destroy();
+		}
+		game.level_rect = [];
+	}
+
+	if(game.level_text.length > 0)
+	{
+		for(const text of game.level_text)
+		{
+			text.destroy();
+		}
+		game.level_text = [];
+	}
+	if(game.signs.length > 0)
+	{
+		for(const sign of game.signs)
+		{
+			sign.setScale(0);
+		}
+		game.signs = [];
+	}
+
+
 
 	//build tiles
 	for(let i = 0; i < LEVELS[dude.level].tiles.length; i++)
@@ -1243,14 +1275,31 @@ function generateLevel(state)
 			}
 		}
 	}
-	if(dude.level === 3)
+	//handle lvl specifics
+	if(dude.level === 0)
+	{
+		game.level_rect.push(state.add.graphics().fillStyle(0x000000).fillRect(WIDTH_CANVAS/2 - 600, 100, WIDTH_CANVAS/2 + 250, 200).setDepth(1));
+		game.level_text.push(state.add.text(WIDTH_CANVAS/3 + WIDTH_CANVAS/6 , 100 + 200/2, "When the time goes to ZERO you go back in time", {fontFamily: FONT_TITLE, color: "white", fontSize: "28px"}).setOrigin(0.5).setScrollFactor(0).setDepth(2));
+	}
+	else if(dude.level === 1)
+	{
+		game.level_rect.push(state.add.graphics().fillStyle(0x000000).fillRect(WIDTH_CANVAS/2 - 600, 100, WIDTH_CANVAS/2 + 250, 200).setDepth(1));
+		game.level_text.push(state.add.text(WIDTH_CANVAS/3 + WIDTH_CANVAS/6 , 100 + 200/2, "When the Loops Remaining goes to ZERO you restart the level", {fontFamily: FONT_TITLE, color: "white", fontSize: "28px"}).setOrigin(0.5).setScrollFactor(0).setDepth(2));
+	}
+	else if(dude.level === 2)
+	{
+		game.level_rect.push(state.add.graphics().fillStyle(0x000000).fillRect(WIDTH_CANVAS/2 - 480, 800, WIDTH_CANVAS/2, 200).setDepth(1));
+		game.level_text.push(state.add.text(WIDTH_CANVAS/3 + WIDTH_CANVAS/6 , 760 + 200/2, "press z to restart level", {fontFamily: FONT_TITLE, color: "white", fontSize: "28px"}).setOrigin(0.5).setScrollFactor(0).setDepth(2));
+		game.level_text.push(state.add.text(WIDTH_CANVAS/3 + WIDTH_CANVAS/6 , 830 + 200/2, "press e to end time loop", {fontFamily: FONT_TITLE, color: "white", fontSize: "28px"}).setOrigin(0.5).setScrollFactor(0).setDepth(2));
+	}
+	else if(dude.level === 3)
 	{
 		game.signs.push(state.add.image(704, 400, 'sign-1').setScale(1.7));
 	}
-	if(dude.level === 4 && game.signs.length > 0)
+	else if(dude.level === 6)
 	{
-		game.signs[0].destroy();
-		game.signs = [];
+		game.level_rect.push(state.add.graphics().fillStyle(0x000000).fillRect(WIDTH_CANVAS/2 - 600, 100, 600, 200).setDepth(1));
+		game.level_text.push(state.add.text(660, 200, "You now have 1 extra time loop", {fontFamily: FONT_TITLE, color: "white", fontSize: "28px"}).setOrigin(0.5).setScrollFactor(0).setDepth(1));
 	}
 }
 
@@ -1260,12 +1309,23 @@ function endTime(state)
 	if(game.warps_remaining < 0)
 	{
 		game.warps_remaining = LEVELS[dude.level].warps;
-		state.ui.warp_counter.setText(game.warps_remaining + ' TIME TRAVELS REMAINING');
+		state.ui.warp_counter.setText(game.warps_remaining + ' TIME LOOPS REMAINING');
 		//restart the level time limit reached
-		levelComplete(state, true);
+		const black_screen = state.add.graphics().fillStyle(0x000000).fillRect(0, HEIGHT_CANVAS/2- 250, WIDTH_CANVAS, HEIGHT_CANVAS/2).setDepth(9);
+		const game_over_text = state.add.text(WIDTH_CANVAS/2 , HEIGHT_CANVAS/2- 60, "OUT OF TIME LOOPS!", {fontFamily: FONT_TITLE, color: "white", fontSize: "60px"}).setOrigin(0.5).setScrollFactor(0).setDepth(10);
+		const game_over_text2 = state.add.text(WIDTH_CANVAS/2 , HEIGHT_CANVAS/2+ 100, "TRY AGAIN", {fontFamily: FONT_TITLE, color: "white", fontSize: "40px"}).setOrigin(0.5).setScrollFactor(0).setDepth(10);
+
+		game.hol_up_a_min = true;
+        setTimeout(function(){
+            game_over_text.setText("");
+			game_over_text2.setText("");
+			black_screen.destroy();
+			levelComplete(state, true);
+			game.hol_up_a_min = false;
+        },1200);
 		return;
 	}
-	state.ui.warp_counter.setText(game.warps_remaining + ' TIME TRAVELS REMAINING')
+	state.ui.warp_counter.setText(game.warps_remaining + ' TIME LOOPS REMAINING')
 	game.ghosts.push({
 		actions: game.stored_actions.slice()
 	});
@@ -1312,8 +1372,21 @@ function levelComplete(state, restart)
 	LEVELS[dude.level].button_sprites = [];
 	if(!restart)
 	{
+		//restart the level time limit reached
+		const black_screen = state.add.graphics().fillStyle(0x000000).fillRect(0, 0, WIDTH_CANVAS, HEIGHT_CANVAS).setDepth(9);
+		const level_complete_text = state.add.text(WIDTH_CANVAS/2 , HEIGHT_CANVAS/2, "LEVEL COMPLETE!", {fontFamily: FONT_TITLE, color: "white", fontSize: "60px"}).setOrigin(0.5).setScrollFactor(0).setDepth(10);
+
+		game.hol_up_a_min = true;
 		dude.level ++;
 		state.ui.text_level.setText("LEVEL: " + (dude.level + 1));
+		setTimeout(function(){
+			level_complete_text.setText("");
+			black_screen.destroy();
+			levelComplete(state, true);
+			game.hol_up_a_min = false;
+		},1200);
+
+		
 	}
 
 	game.frame_counter = game.max_frame_counter; // reset
@@ -1336,5 +1409,5 @@ function levelComplete(state, restart)
 	dude.yvel = 0;
 	dude.buttons_pressed = 0;
 	generateLevel(state);
-	state.ui.warp_counter.setText(game.warps_remaining + ' TIME TRAVELS REMAINING');
+	state.ui.warp_counter.setText(game.warps_remaining + ' TIME LOOPS REMAINING');
 }

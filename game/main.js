@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function()
 		width: WIDTH_CANVAS,
 		height: HEIGHT_CANVAS,
 		resolution: 5,
-		scene: [gameplay],
+		scene: [scene_menu, gameplay],
 		fps: {
 			target: 60,
 			forceSetTimeOut: true // Force the game to use setTimeout for frame rendering
